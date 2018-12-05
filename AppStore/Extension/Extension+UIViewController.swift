@@ -7,4 +7,12 @@ extension UIViewController {
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
+
+    func setupNavigationBar() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+
+    func hideNavigationBarBorder() {
+        navigationController?.navigationBar.shadowImage = UIImage()
+    }
 }

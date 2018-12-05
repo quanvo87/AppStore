@@ -1,27 +1,17 @@
 import UIKit
 
 class NewViewController: UIViewController {
-    private var networkService: NewNetworkService!
+    private let newService: NewServiceProtocol
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    init(newService: NewServiceProtocol) {
+        self.newService = newService
+
+        super.init(nibName: nil, bundle: nil)
 
         navigationItem.title = "Newest Apps"
-        setupNavigationBar()
     }
 
-    static func make(networkService: NewNetworkService) -> NewViewController {
-        let vc = UIStoryboard.main.instantiateViewController(withIdentifier: "NewViewController") as! NewViewController
-        vc.networkService = networkService
-        return vc
-    }
-}
-
-private extension NewViewController {
-    func setupNavigationBar() {
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.barTintColor = .white
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        navigationController?.navigationBar.shadowImage = UIImage()
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

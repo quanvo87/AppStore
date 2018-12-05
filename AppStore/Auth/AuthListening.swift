@@ -1,20 +1,20 @@
 import FirebaseAuth
 
-protocol AuthListenerProtocol {
-    init(delegate: AuthListenerDelegate)
+protocol AuthListening {
+    init(delegate: AuthListeningDelegate)
     func listenForAuthState()
 }
 
-protocol AuthListenerDelegate: class {
-    func userDidLogIn(_ listener: AuthListenerProtocol, uid: String)
-    func userDidLogOut(_ listener: AuthListenerProtocol)
+protocol AuthListeningDelegate: AnyObject {
+    func userDidLogIn(_ listener: AuthListening, uid: String)
+    func userDidLogOut(_ listener: AuthListening)
 }
 
-class AuthListener: AuthListenerProtocol {
+class AuthListener: AuthListening {
     private var handle: AuthStateDidChangeListenerHandle?
-    private weak var delegate: AuthListenerDelegate?
+    private weak var delegate: AuthListeningDelegate?
 
-    required init(delegate: AuthListenerDelegate) {
+    required init(delegate: AuthListeningDelegate) {
         self.delegate = delegate
     }
 

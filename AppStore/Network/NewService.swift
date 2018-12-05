@@ -1,10 +1,10 @@
 import Foundation
 
-protocol NewNetworkService {
+protocol NewServiceProtocol {
     func getNewestApps(offset: Int, completion: @escaping ([App]) -> Void)
 }
 
-extension URLSession: NewNetworkService {
+extension URLSession: NewServiceProtocol {
     func getNewestApps(offset: Int, completion: @escaping ([App]) -> Void) {
         completion([])
     }

@@ -6,10 +6,6 @@ class LoginViewController: UIViewController {
 
     private var authService: AuthServiceProtocol!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
     static func make(authService: AuthServiceProtocol = AuthService()) -> LoginViewController {
         let vc = UIStoryboard.main.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         vc.authService = authService
