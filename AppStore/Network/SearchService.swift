@@ -6,6 +6,7 @@ protocol SearchServiceProtocol {
 }
 
 class SearchService: SearchServiceProtocol {
+    private let searchUrl = "https://us-central1-appstore-e4a8e.cloudfunctions.net/search"
     private let urlSession: URLSession
     private var pendingWorkItem: DispatchWorkItem?
 
