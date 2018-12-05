@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		5916D07621B7A7D800FD98DA /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5916D07521B7A7D800FD98DA /* SearchService.swift */; };
 		5916D07921B7AE4700FD98DA /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5916D07821B7AE4700FD98DA /* Result.swift */; };
+		595BF0B021B8549D00965F1E /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595BF0AF21B8549D00965F1E /* CustomError.swift */; };
+		595BF0B221B86C3D00965F1E /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595BF0B121B86C3D00965F1E /* SearchResultsViewController.swift */; };
+		595BF0B521B877E700965F1E /* SearchVC+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595BF0B421B877E700965F1E /* SearchVC+TableViewDataSource.swift */; };
+		595BF0B721B8783500965F1E /* SearchVC+SearchResultsUpdating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595BF0B621B8783500965F1E /* SearchVC+SearchResultsUpdating.swift */; };
+		595BF0B921B8785A00965F1E /* SearchVC+SearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595BF0B821B8785A00965F1E /* SearchVC+SearchBarDelegate.swift */; };
+		595BF0BB21B892C900965F1E /* SearchVC+SearchResultsVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595BF0BA21B892C900965F1E /* SearchVC+SearchResultsVCDelegate.swift */; };
+		595BF0BD21B89C3A00965F1E /* SearchVC+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595BF0BC21B89C3A00965F1E /* SearchVC+TableViewDelegate.swift */; };
 		5983583C21B765CE00362AC5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5983583B21B765CE00362AC5 /* GoogleService-Info.plist */; };
 		5983583E21B768DE00362AC5 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983583D21B768DE00362AC5 /* EntryViewController.swift */; };
 		5983584021B76A2700362AC5 /* AuthListening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983583F21B76A2700362AC5 /* AuthListening.swift */; };
@@ -59,6 +66,13 @@
 		551D5AC0B0C3502E7FFC4292 /* Pods_AppStoreUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStoreUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5916D07521B7A7D800FD98DA /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		5916D07821B7AE4700FD98DA /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		595BF0AF21B8549D00965F1E /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
+		595BF0B121B86C3D00965F1E /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
+		595BF0B421B877E700965F1E /* SearchVC+TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchVC+TableViewDataSource.swift"; sourceTree = "<group>"; };
+		595BF0B621B8783500965F1E /* SearchVC+SearchResultsUpdating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchVC+SearchResultsUpdating.swift"; sourceTree = "<group>"; };
+		595BF0B821B8785A00965F1E /* SearchVC+SearchBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchVC+SearchBarDelegate.swift"; sourceTree = "<group>"; };
+		595BF0BA21B892C900965F1E /* SearchVC+SearchResultsVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchVC+SearchResultsVCDelegate.swift"; sourceTree = "<group>"; };
+		595BF0BC21B89C3A00965F1E /* SearchVC+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchVC+TableViewDelegate.swift"; sourceTree = "<group>"; };
 		5983583B21B765CE00362AC5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5983583D21B768DE00362AC5 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		5983583F21B76A2700362AC5 /* AuthListening.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthListening.swift; sourceTree = "<group>"; };
@@ -145,8 +159,22 @@
 			isa = PBXGroup;
 			children = (
 				5916D07821B7AE4700FD98DA /* Result.swift */,
+				595BF0AF21B8549D00965F1E /* CustomError.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		595BF0B321B877BA00965F1E /* SearchViewController */ = {
+			isa = PBXGroup;
+			children = (
+				59B0C56121B74C37004495F6 /* SearchViewController.swift */,
+				595BF0B421B877E700965F1E /* SearchVC+TableViewDataSource.swift */,
+				595BF0BC21B89C3A00965F1E /* SearchVC+TableViewDelegate.swift */,
+				595BF0B621B8783500965F1E /* SearchVC+SearchResultsUpdating.swift */,
+				595BF0BA21B892C900965F1E /* SearchVC+SearchResultsVCDelegate.swift */,
+				595BF0B821B8785A00965F1E /* SearchVC+SearchBarDelegate.swift */,
+			);
+			path = SearchViewController;
 			sourceTree = "<group>";
 		};
 		59B0C52221B74624004495F6 = {
@@ -217,7 +245,8 @@
 				59B0C53021B74625004495F6 /* NewViewController.swift */,
 				59B0C53221B74625004495F6 /* PopularViewController.swift */,
 				59B0C55F21B74C24004495F6 /* CategoriesViewController.swift */,
-				59B0C56121B74C37004495F6 /* SearchViewController.swift */,
+				595BF0B321B877BA00965F1E /* SearchViewController */,
+				595BF0B121B86C3D00965F1E /* SearchResultsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -486,8 +515,13 @@
 				5983583E21B768DE00362AC5 /* EntryViewController.swift in Sources */,
 				59B0C56821B74DB0004495F6 /* Factory.swift in Sources */,
 				59B0C56221B74C37004495F6 /* SearchViewController.swift in Sources */,
+				595BF0B021B8549D00965F1E /* CustomError.swift in Sources */,
 				59B0C53321B74625004495F6 /* PopularViewController.swift in Sources */,
+				595BF0BB21B892C900965F1E /* SearchVC+SearchResultsVCDelegate.swift in Sources */,
+				595BF0B921B8785A00965F1E /* SearchVC+SearchBarDelegate.swift in Sources */,
+				595BF0B221B86C3D00965F1E /* SearchResultsViewController.swift in Sources */,
 				5916D07921B7AE4700FD98DA /* Result.swift in Sources */,
+				595BF0B721B8783500965F1E /* SearchVC+SearchResultsUpdating.swift in Sources */,
 				59B0C52F21B74625004495F6 /* AppDelegate.swift in Sources */,
 				59B0C56021B74C24004495F6 /* CategoriesViewController.swift in Sources */,
 				5983584421B76E0500362AC5 /* Extension+UIViewController.swift in Sources */,
@@ -496,6 +530,8 @@
 				5916D07621B7A7D800FD98DA /* SearchService.swift in Sources */,
 				59B0C56521B74D1E004495F6 /* NewService.swift in Sources */,
 				59B0C53121B74625004495F6 /* NewViewController.swift in Sources */,
+				595BF0BD21B89C3A00965F1E /* SearchVC+TableViewDelegate.swift in Sources */,
+				595BF0B521B877E700965F1E /* SearchVC+TableViewDataSource.swift in Sources */,
 				5983584621B76F8200362AC5 /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

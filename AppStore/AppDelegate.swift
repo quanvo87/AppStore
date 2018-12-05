@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: AuthListeningDelegate {
     func userDidLogIn(_ listener: AuthListening, uid: String) {
-        window?.rootViewController = factory.makeTabBarController()
+        window?.rootViewController = factory.makeTabBarController(uid: uid)
     }
 
     func userDidLogOut(_ listener: AuthListening) {

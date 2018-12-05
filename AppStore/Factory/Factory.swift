@@ -7,7 +7,7 @@ class Factory {
         self.urlSession = urlSession
     }
 
-    func makeTabBarController() -> UITabBarController {
+    func makeTabBarController(uid: String) -> UITabBarController {
         let tabBarController = UITabBarController(nibName: nil, bundle: nil)
 
         let newVC = NewViewController(newService: urlSession)
@@ -19,7 +19,7 @@ class Factory {
         let categoriesVC = CategoriesViewController()
         categoriesVC.tabBarItem = UITabBarItem(title: "Categories", image: UIImage(named: "categories"), tag: 2)
 
-        let searchService = SearchService(urlSession: urlSession)
+        let searchService = SearchService(urlSession: urlSession, uid: uid)
         let searchVC = SearchViewController(searchService: searchService)
         searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 3)
 

@@ -17,8 +17,9 @@ const searchUrl =
 exports.search = functions.https.onRequest((req, res) => {
   const uid = req.query.uid
   const query = req.query.query
+  const saveSearch = req.query.saveSearch
+  if (saveSearch === 'true') dbUtil.saveSearchHistory(uid, query)
   const url = searchUrl + query
-  dbUtil.saveSearchHistory(uid, query)
   return axios
     .get(url)
     .then(searchResponse => res.send(searchResponse.data.results))
@@ -30,7 +31,7 @@ exports.search = functions.https.onRequest((req, res) => {
 
 exports.onSearch = functions.firestore
   .document('user/{uid}/searchHistory/{docId}')
-  .onCreate((snap) => {
+  .onCreate(snap => {
     const query = snap.data().query
     const url = searchUrl + query
     return axios
@@ -41,3 +42,14 @@ exports.onSearch = functions.firestore
         return res.status(400).end()
       })
   })
+
+exports.getRecentSearches = functions.https.onRequest((req, res) => {
+  const uid = req.query.uid
+  return dbUtil
+    .getRecentSearches(uid)
+    .then(recentSearches => res.send(recentSearches))
+    .catch(error => {
+      console.log(error)
+      return res.status(400).end()
+    })
+})

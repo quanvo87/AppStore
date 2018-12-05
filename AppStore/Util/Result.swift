@@ -1,4 +1,4 @@
-enum Result<T, Error> {
+enum Result<T> {
     case success(T)
     case failure(Error)
 }

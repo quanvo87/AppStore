@@ -10,6 +10,7 @@ extension UIViewController {
 
     func setupNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.barTintColor = .white
     }
 
     func hideNavigationBarBorder() {

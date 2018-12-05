@@ -1,8 +1,6 @@
 const admin = require('firebase-admin')
 const db = require('../index').db
 
-const appsRef = db.collection('app')
-
 exports.saveSearchHistory = (uid, query) =>
   db
     .collection('user')
@@ -10,11 +8,31 @@ exports.saveSearchHistory = (uid, query) =>
     .collection('searchHistory')
     .add({
       query: query,
-      timestamp: admin.firestore.FieldValue.serverTimestamp()
+      date: admin.firestore.FieldValue.serverTimestamp()
     })
 
 exports.saveApps = apps => {
   const batch = db.batch()
-  apps.forEach(app => batch.set(appsRef.doc(app['trackId'].toString()), app))
+  apps.forEach(app =>
+    batch.set(db.collection('app').doc(app['trackId'].toString()), app, {
+      merge: true
+    })
+  )
   return batch.commit()
 }
+
+exports.getRecentSearches = uid =>
+  new Promise((resolve, reject) =>
+    db
+      .collection('user')
+      .doc(uid)
+      .collection('searchHistory')
+      .orderBy('date', 'desc')
+      .get()
+      .then(snapshot => {
+        const recentSearches = []
+        snapshot.forEach(doc => recentSearches.push(doc.data()['query']))
+        return resolve(recentSearches)
+      })
+      .catch(error => reject(error))
+  )
