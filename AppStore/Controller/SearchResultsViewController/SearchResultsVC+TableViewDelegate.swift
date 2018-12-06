@@ -2,7 +2,7 @@ import UIKit
 
 extension SearchResultsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return isShowingSearchResults ? 280 : 40
+        return isShowingSearchResults ? 300 : 40
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

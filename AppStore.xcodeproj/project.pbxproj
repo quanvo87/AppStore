@@ -172,9 +172,9 @@
 		5916D07721B7AE3800FD98DA /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				592A6C2D21B8B5EF00AC2865 /* Shared.swift */,
 				5916D07821B7AE4700FD98DA /* Result.swift */,
 				595BF0AF21B8549D00965F1E /* CustomError.swift */,
-				592A6C2D21B8B5EF00AC2865 /* Shared.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
