@@ -1,40 +1,36 @@
 import UIKit
 
-protocol SearchViewControllerDelegate: AnyObject {
-    func controller(_ controller: SearchViewController, didGetSearchResults searchResults: [String])
+protocol SearchVCDelegate: AnyObject {
+    func controller(_ controller: SearchViewController, didSelectRecentSearch recentSearch: String)
 }
 
 class SearchViewController: UIViewController {
     let tableView = UITableView()
-
     let searchService: SearchServiceProtocol
+    weak var delegate: SearchVCDelegate?
 
-    var searchResults = [App]()
-    var recentSearches = [String]()
-
-    weak var delegate: SearchViewControllerDelegate?
-
-    init(searchService: SearchServiceProtocol) {
+    init(searchService: SearchServiceProtocol, factory: Factory) {
         self.searchService = searchService
 
         super.init(nibName: nil, bundle: nil)
 
         navigationItem.title = "Search"
 
-        let searchResultsController = SearchResultsViewController(delegate: self)
+        let searchResultsController = SearchResultsViewController(searchService: searchService, factory: factory, delegate: self)
         delegate = searchResultsController
 
         let searchController = UISearchController(searchResultsController: searchResultsController)
-        searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = "App Store"
-        searchController.searchBar.delegate = self
+        searchController.searchResultsUpdater = searchResultsController
+        searchController.searchBar.delegate = searchResultsController
         navigationItem.searchController = searchController
         definesPresentationContext = true
 
-        tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-        tableView.tableFooterView = UIView()
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        tableView.tableFooterView = UIView()
+
         view.addSubview(tableView)
     }
 
@@ -51,32 +47,26 @@ class SearchViewController: UIViewController {
             navigationItem.hidesSearchBarWhenScrolling = true
         }
 
-        searchService.getRecentSearches { [weak self] result in
-            switch result {
-            case .failure(let error):
-                self?.showAlert(title: "Error Getting Recent Searches", message: error.localizedDescription)
-            case .success(let recentSearches):
-                self?.recentSearches = recentSearches
-                self?.tableView.reloadData()
-            }
-        }
+        getRecentSearches()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func search(query: String) {
-        searchService.search(query: query, saveSearch: true) { [weak self] result in
-            guard let `self` = self else {
-                return
-            }
+    var recentSearches = [String]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+
+    func getRecentSearches() {
+        searchService.getRecentSearches { [weak self] result in
             switch result {
             case .failure(let error):
-                self.showAlert(title: "Search Error", message: error.localizedDescription)
-            case .success(let results):
-                self.searchResults = results
-                self.tableView.reloadData()
+                self?.showAlert(title: "Error Getting Recent Searches", message: error.localizedDescription)
+            case .success(let recentSearches):
+                self?.recentSearches = recentSearches
             }
         }
     }

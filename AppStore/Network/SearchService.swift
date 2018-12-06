@@ -9,8 +9,6 @@ class SearchService: SearchServiceProtocol {
     private let urlSession: URLSession
     private let uid: String
 
-    private lazy var decoder = JSONDecoder()
-
     private var pendingWorkItem: DispatchWorkItem?
 
     init(urlSession: URLSession, uid: String) {
@@ -22,13 +20,11 @@ class SearchService: SearchServiceProtocol {
         pendingWorkItem?.cancel()
 
         let newWorkItem = DispatchWorkItem { [weak self] in
-            guard let `self` = self else {
+            guard let url = self?.getSearchUrl(query: query, saveSearch: saveSearch) else {
+                completion(.failure(CustomError.invalidUrl))
                 return
             }
-            guard let url = self.getSearchUrl(query: query, saveSearch: saveSearch) else {
-                return
-            }
-            self.urlSession.dataTask(with: url) { data, response, error in
+            self?.urlSession.dataTask(with: url) { data, response, error in
                 if let error = error {
                     completion(.failure(error))
                     return
@@ -42,7 +38,7 @@ class SearchService: SearchServiceProtocol {
                     return
                 }
                 do {
-                    let apps = try self.decoder.decode([App].self, from: data)
+                    let apps = try decoder.decode([App].self, from: data)
                     DispatchQueue.main.async {
                         completion(.success(apps))
                     }
@@ -59,12 +55,10 @@ class SearchService: SearchServiceProtocol {
 
     func getRecentSearches(completion: @escaping (Result<[String]>) -> Void) {
         guard let url = recentSearchesUrl else {
+            completion(.failure(CustomError.invalidUrl))
             return
         }
-        urlSession.dataTask(with: url) { [weak self] data, response, error in
-            guard let `self` = self else {
-                return
-            }
+        urlSession.dataTask(with: url) { data, response, error in
             if let error = error {
                 completion(.failure(error))
                 return
@@ -78,7 +72,7 @@ class SearchService: SearchServiceProtocol {
                 return
             }
             do {
-                let recentSearches = try self.decoder.decode([String].self, from: data)
+                let recentSearches = try decoder.decode([String].self, from: data)
                 DispatchQueue.main.async {
                     completion(.success(recentSearches))
                 }
