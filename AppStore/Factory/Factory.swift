@@ -14,7 +14,7 @@ class Factory {
     func makeTabBarController(uid: String) -> UITabBarController {
         let tabBarController = UITabBarController(nibName: nil, bundle: nil)
 
-        let newVC = NewViewController(newService: urlSession)
+        let newVC = NewViewController(newService: urlSession, imageLoader: imageLoader)
         newVC.tabBarItem = UITabBarItem(title: "New", image: UIImage(named: "new"), tag: 0)
 
         let popularVC = PopularViewController()

@@ -1,7 +1,7 @@
 import UIKit
 
-class AppSearchCell: UITableViewCell {
-    static let reuseIdentifier = String(describing: AppSearchCell.self)
+class LargeAppCell: UITableViewCell {
+    static let reuseIdentifier = String(describing: LargeAppCell.self)
 
     @IBOutlet weak var appIconImageView: UIImageView!
     @IBOutlet weak var appNameLabel: UILabel!
@@ -40,6 +40,7 @@ class AppSearchCell: UITableViewCell {
         sellerNameLabel.text = app.sellerName
         ratingsLabel.text = String(app.averageUserRating) + " (" + String(app.userRatingCount) + ")"
         priceButton.setTitle(app.formattedPrice, for: .normal)
+        priceButton.isHidden = app.formattedPrice == ""
 
         appIconImageView.image = nil
         appIconUrl = app.artworkUrl60

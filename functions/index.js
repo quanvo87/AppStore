@@ -43,7 +43,7 @@ exports.onSearch = functions.firestore
       })
   })
 
-exports.getRecentSearches = functions.https.onRequest((req, res) => {
+exports.recentSearches = functions.https.onRequest((req, res) => {
   const uid = req.query.uid
   return dbUtil
     .getRecentSearches(uid)
@@ -53,3 +53,13 @@ exports.getRecentSearches = functions.https.onRequest((req, res) => {
       return res.status(400).end()
     })
 })
+
+exports.newestApps = functions.https.onRequest((_, res) =>
+  dbUtil
+    .getNewestApps()
+    .then(newestApps => res.send(newestApps))
+    .catch(error => {
+      console.log(error)
+      return res.status(400).end()
+    })
+)

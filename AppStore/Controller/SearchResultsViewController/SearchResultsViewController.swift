@@ -23,8 +23,8 @@ class SearchResultsViewController: UIViewController {
         tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         tableView.tableFooterView = UIView()
         tableView.register(
-            UINib(nibName: AppSearchCell.reuseIdentifier, bundle: nil),
-            forCellReuseIdentifier: AppSearchCell.reuseIdentifier
+            UINib(nibName: LargeAppCell.reuseIdentifier, bundle: nil),
+            forCellReuseIdentifier: LargeAppCell.reuseIdentifier
         )
 
         view.addSubview(tableView)

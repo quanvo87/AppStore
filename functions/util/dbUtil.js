@@ -1,6 +1,8 @@
 const admin = require('firebase-admin')
 const db = require('../index').db
 
+const querySize = 20
+
 exports.saveSearchHistory = (uid, query) =>
   db
     .collection('user')
@@ -33,6 +35,21 @@ exports.getRecentSearches = uid =>
         const recentSearches = []
         snapshot.forEach(doc => recentSearches.push(doc.data()['query']))
         return resolve(recentSearches)
+      })
+      .catch(error => reject(error))
+  )
+
+exports.getNewestApps = () =>
+  new Promise((resolve, reject) =>
+    db
+      .collection('app')
+      .orderBy('currentVersionReleaseDate', 'desc')
+      .limit(querySize)
+      .get()
+      .then(snapshot => {
+        const newestApps = []
+        snapshot.forEach(doc => newestApps.push(doc.data()))
+        return resolve(newestApps)
       })
       .catch(error => reject(error))
   )

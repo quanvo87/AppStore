@@ -7,7 +7,7 @@ extension SearchResultsViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if isShowingSearchResults {
-            let cell = tableView.dequeueReusableCell(withIdentifier: AppSearchCell.reuseIdentifier) as! AppSearchCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: LargeAppCell.reuseIdentifier) as! LargeAppCell
             let searchResult = searchResults[indexPath.row]
             cell.load(app: searchResult, imageLoader: imageLoader)
             return cell
