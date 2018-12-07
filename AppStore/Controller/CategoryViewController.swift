@@ -2,12 +2,10 @@ import UIKit
 
 class CategoryViewController: UIViewController {
     private let tableView = UITableView()
-    private let categoriesService: CategoriesServiceProtocol
-    private let imageLoader: ImageLoading
+    private let factory: Factory
 
-    init(category: String, categoriesService: CategoriesServiceProtocol, imageLoader: ImageLoading) {
-        self.categoriesService = categoriesService
-        self.imageLoader = imageLoader
+    init(category: String, factory: Factory) {
+        self.factory = factory
 
         super.init(nibName: nil, bundle: nil)
 
@@ -25,7 +23,7 @@ class CategoryViewController: UIViewController {
 
         view.addSubview(tableView)
 
-        categoriesService.getAppsForCategory(category) { [weak self] result in
+        factory.categoriesService.getAppsForCategory(category) { [weak self] result in
             switch result {
             case .failure(let error):
                 self?.showAlert(title: "Error Getting Apps", message: error.localizedDescription)
@@ -34,15 +32,15 @@ class CategoryViewController: UIViewController {
             }
         }
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 
     private var apps = [App]() {
         didSet {
             tableView.reloadData()
         }
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
@@ -54,7 +52,7 @@ extension CategoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: LargeAppCell.reuseIdentifier) as! LargeAppCell
         let app = apps[indexPath.row]
-        cell.load(app: app, imageLoader: imageLoader)
+        cell.load(app: app, factory: factory)
         return cell
     }
 }
@@ -62,5 +60,13 @@ extension CategoryViewController: UITableViewDataSource {
 extension CategoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        let app = apps[indexPath.row]
+        let vc = factory.makeAppDetailViewController(app: app)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -23,7 +23,7 @@ class AppDetailHeaderCell: UITableViewCell {
         priceButton.backgroundColor = UIColor.tintColor
     }
     
-    func load(app: App, imageLoader: ImageLoading) {
+    func load(app: App, factory: Factory) {
         appNameLabel.text = app.trackName
         sellerNameLabel.text = app.sellerName
         priceButton.setTitle(app.formattedPrice, for: .normal)
@@ -31,7 +31,7 @@ class AppDetailHeaderCell: UITableViewCell {
         
         appIconImageView.image = nil
         appIconUrl = app.artworkUrl512
-        imageLoader.getImage(forUrl: app.artworkUrl512) { [weak self] result in
+        factory.imageLoader.getImage(forUrl: app.artworkUrl512) { [weak self] result in
             switch result {
             case .failure(let error):
                 print(error)

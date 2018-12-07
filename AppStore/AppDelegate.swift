@@ -12,7 +12,6 @@ import Firebase
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    private let factory = Factory()
     private lazy var authListener: AuthListening = AuthListener(delegate: self)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -24,8 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate: AuthListeningDelegate {
-    func userDidLogIn(_ listener: AuthListening, uid: String) {
-        window?.rootViewController = factory.makeTabBarController(uid: uid)
+    func userDidLogIn(_ listener: AuthListening, user: User) {
+        let factory = Factory(user: user)
+        window?.rootViewController = factory.makeTabBarController()
     }
 
     func userDidLogOut(_ listener: AuthListening) {

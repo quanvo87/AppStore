@@ -6,7 +6,7 @@ extension SearchResultsViewController: UISearchResultsUpdating {
             isShowingSearchResults = false
             return
         }
-        searchService.search(query: text, saveSearch: false) { [weak self] result in
+        factory.searchService.search(query: text, saveSearch: false) { [weak self] result in
             guard let `self` = self else {
                 return
             }

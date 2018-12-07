@@ -6,19 +6,17 @@ protocol SearchVCDelegate: AnyObject {
 
 class SearchViewController: UIViewController {
     let tableView = UITableView()
-    let searchService: SearchServiceProtocol
     let factory: Factory
     weak var delegate: SearchVCDelegate?
 
-    init(searchService: SearchServiceProtocol, factory: Factory) {
-        self.searchService = searchService
+    init(factory: Factory) {
         self.factory = factory
 
         super.init(nibName: nil, bundle: nil)
 
         navigationItem.title = "Search"
 
-        let searchResultsController = SearchResultsViewController(searchService: searchService, factory: factory, delegate: self)
+        let searchResultsController = SearchResultsViewController(factory: factory, delegate: self)
         delegate = searchResultsController
 
         let searchController = UISearchController(searchResultsController: searchResultsController)
@@ -63,7 +61,7 @@ class SearchViewController: UIViewController {
     }
 
     func getRecentSearches() {
-        searchService.getRecentSearches { [weak self] result in
+        factory.searchService.getRecentSearches { [weak self] result in
             switch result {
             case .failure(let error):
                 self?.showAlert(title: "Error Getting Recent Searches", message: error.localizedDescription)

@@ -2,11 +2,9 @@ import UIKit
 
 class CategoriesViewController: UIViewController {
     private let tableView = UITableView()
-    private let categoriesService: CategoriesServiceProtocol
     private let factory: Factory
 
-    init(categoriesService: CategoriesServiceProtocol, factory: Factory) {
-        self.categoriesService = categoriesService
+    init(factory: Factory) {
         self.factory = factory
 
         super.init(nibName: nil, bundle: nil)
@@ -20,7 +18,7 @@ class CategoriesViewController: UIViewController {
 
         view.addSubview(tableView)
 
-        categoriesService.getCategories { [weak self] result in
+        factory.categoriesService.getCategories { [weak self] result in
             switch result {
             case .failure(let error):
                 self?.showAlert(title: "Error Getting App Categories", message: error.localizedDescription)
@@ -59,7 +57,7 @@ extension CategoriesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let category = categories[indexPath.row]
-        let vc = CategoryViewController(category: category, categoriesService: categoriesService, imageLoader: factory.imageLoader)
+        let vc = CategoryViewController(category: category, factory: factory)
         navigationController?.pushViewController(vc, animated: true)
     }
 }

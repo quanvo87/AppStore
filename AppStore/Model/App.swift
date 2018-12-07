@@ -17,7 +17,7 @@ struct App {
     let primaryGenreName: String
     let genres: [String]
     let releaseDate: String
-    let viewCount: Int
+    var viewCount: Int
 }
 
 extension App: Codable {

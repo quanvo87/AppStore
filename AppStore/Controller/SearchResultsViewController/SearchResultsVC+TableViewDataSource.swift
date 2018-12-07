@@ -9,7 +9,7 @@ extension SearchResultsViewController: UITableViewDataSource {
         if isShowingSearchResults {
             let cell = tableView.dequeueReusableCell(withIdentifier: LargeAppCell.reuseIdentifier) as! LargeAppCell
             let searchResult = searchResults[indexPath.row]
-            cell.load(app: searchResult, imageLoader: imageLoader)
+            cell.load(app: searchResult, factory: factory)
             return cell
         } else {
             let cell = UITableViewCell()

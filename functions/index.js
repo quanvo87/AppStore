@@ -78,3 +78,24 @@ exports.appsForGenre = functions.https.onRequest((req, res) => {
       return res.status(400).end()
     })
 })
+
+exports.incrementAppViewCount = functions.https.onRequest((req, res) => {
+  const trackId = req.query.trackId
+  return dbUtil
+    .incrementAppViewCount(trackId)
+    .then(newViewCount => res.send(String(newViewCount)))
+    .catch(error => {
+      console.log(error)
+      return res.status(400).end()
+    })
+})
+
+exports.popularApps = functions.https.onRequest((_, res) =>
+  dbUtil
+    .getPopularApps()
+    .then(apps => res.send(apps))
+    .catch(error => {
+      console.log(error)
+      return res.status(400).end()
+    })
+)

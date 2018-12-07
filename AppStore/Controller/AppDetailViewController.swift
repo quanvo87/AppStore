@@ -2,9 +2,9 @@ import UIKit
 
 class AppDetailViewController: UIViewController {
     private let tableView = UITableView()
-    private let app: App
     private let factory: Factory
     private let imageLoader: ImageLoading
+    private var app: App
 
     init(app: App, factory: Factory) {
         self.app = app
@@ -47,6 +47,21 @@ class AppDetailViewController: UIViewController {
         tableView.reloadData()
 
         view.addSubview(tableView)
+
+        factory.popularService.incrementAppViewCount(trackId: app.trackId) { [weak self] result in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let newViewCount):
+                self?.app.viewCount = newViewCount
+                DispatchQueue.main.async {
+                    self?.tableView.reloadSections(
+                        IndexSet(integer: 1),
+                        with: UITableView.RowAnimation.automatic
+                    )
+                }
+            }
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -97,7 +112,7 @@ extension AppDetailViewController: UITableViewDataSource {
         switch section {
         case .header:
             let cell = tableView.dequeueReusableCell(withIdentifier: AppDetailHeaderCell.reuseIdentifier) as! AppDetailHeaderCell
-            cell.load(app: app, imageLoader: imageLoader)
+            cell.load(app: app, factory: factory)
             return cell
         case .ratings:
             let cell = tableView.dequeueReusableCell(withIdentifier: AppDetailRatingsCell.reuseIdentifier) as! AppDetailRatingsCell

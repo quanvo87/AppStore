@@ -62,6 +62,8 @@
 		59F5EA8F21B9B98D0034B18E /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F5EA8E21B9B98D0034B18E /* Extension+UIColor.swift */; };
 		59F5EA9121B9BC550034B18E /* AppDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F5EA9021B9BC550034B18E /* AppDetailViewController.swift */; };
 		59F8819C21BA6FB200F21F1E /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F8819B21BA6FB200F21F1E /* Extension+String.swift */; };
+		59F8819E21BA74D500F21F1E /* PopularService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F8819D21BA74D500F21F1E /* PopularService.swift */; };
+		59F881A021BAD2EC00F21F1E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F8819F21BAD2EC00F21F1E /* User.swift */; };
 		5D2E8860B4C00CEF2387A4A6 /* Pods_AppStoreUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551D5AC0B0C3502E7FFC4292 /* Pods_AppStoreUITests.framework */; };
 		D8B40516287466933123DD2A /* Pods_AppStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6902F7698DF320599278FB63 /* Pods_AppStore.framework */; };
 		DFC6571002EAF37988F7087C /* Pods_AppStoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 268BBBAAFEA0C85A52F1A96B /* Pods_AppStoreTests.framework */; };
@@ -151,6 +153,8 @@
 		59F5EA8E21B9B98D0034B18E /* Extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		59F5EA9021B9BC550034B18E /* AppDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailViewController.swift; sourceTree = "<group>"; };
 		59F8819B21BA6FB200F21F1E /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
+		59F8819D21BA74D500F21F1E /* PopularService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularService.swift; sourceTree = "<group>"; };
+		59F8819F21BAD2EC00F21F1E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6902F7698DF320599278FB63 /* Pods_AppStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		72132A3DD7A1ABDD51C12875 /* Pods-AppStoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppStoreTests/Pods-AppStoreTests.release.xcconfig"; sourceTree = "<group>"; };
 		9169FB167E6EDDAA02EC975D /* Pods-AppStoreUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppStoreUITests/Pods-AppStoreUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -345,6 +349,7 @@
 			isa = PBXGroup;
 			children = (
 				59B0C56421B74D1E004495F6 /* NewService.swift */,
+				59F8819D21BA74D500F21F1E /* PopularService.swift */,
 				5916D07521B7A7D800FD98DA /* SearchService.swift */,
 				5956318821B932060010B2BE /* CategoriesService.swift */,
 				592A6C2B21B8B51600AC2865 /* ImageLoading.swift */,
@@ -375,6 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				59B0C56D21B7563D004495F6 /* App.swift */,
+				59F8819F21BAD2EC00F21F1E /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -629,6 +635,7 @@
 				595BF0B921B8785A00965F1E /* SearchResultsVC+SearchBarDelegate.swift in Sources */,
 				595BF0B221B86C3D00965F1E /* SearchResultsViewController.swift in Sources */,
 				59F5EA9121B9BC550034B18E /* AppDetailViewController.swift in Sources */,
+				59F8819E21BA74D500F21F1E /* PopularService.swift in Sources */,
 				595BC75821BA5EC500A9CE80 /* AppDetailVersionCell.swift in Sources */,
 				59146BE421B9F78A00F2744C /* AppDetailRatingsCell.swift in Sources */,
 				5916D07921B7AE4700FD98DA /* Result.swift in Sources */,
@@ -653,6 +660,7 @@
 				595BF0B521B877E700965F1E /* SearchVC+TableViewDataSource.swift in Sources */,
 				5983584621B76F8200362AC5 /* AuthService.swift in Sources */,
 				59F5EA8F21B9B98D0034B18E /* Extension+UIColor.swift in Sources */,
+				59F881A021BAD2EC00F21F1E /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

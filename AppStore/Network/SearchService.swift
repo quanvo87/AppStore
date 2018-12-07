@@ -34,7 +34,7 @@ class SearchService: SearchServiceProtocol {
                     return
                 }
                 guard let data = data else {
-                    completion(.failure(CustomError.noData))
+                    completion(.failure(CustomError.invalidData))
                     return
                 }
                 do {
@@ -46,6 +46,7 @@ class SearchService: SearchServiceProtocol {
                     completion(.failure(error))
                 }
                 }.resume()
+            self?.urlSession.finishTasksAndInvalidate()
         }
 
         pendingWorkItem = newWorkItem
@@ -68,7 +69,7 @@ class SearchService: SearchServiceProtocol {
                 return
             }
             guard let data = data else {
-                completion(.failure(CustomError.noData))
+                completion(.failure(CustomError.invalidData))
                 return
             }
             do {
@@ -80,6 +81,7 @@ class SearchService: SearchServiceProtocol {
                 completion(.failure(error))
             }
         }.resume()
+        urlSession.finishTasksAndInvalidate()
     }
 }
 

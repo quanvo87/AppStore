@@ -34,7 +34,7 @@ class LargeAppCell: UITableViewCell {
         screenshot3imageView.contentMode = .scaleAspectFill
     }
 
-    func load(app: App, imageLoader: ImageLoading) {
+    func load(app: App, factory: Factory) {
         appNameLabel.text = app.trackName
         sellerNameLabel.text = app.sellerName
         ratingsLabel.text = String(app.averageUserRating) + " ✩ (" + String(app.userRatingCount) + ")"
@@ -46,6 +46,8 @@ class LargeAppCell: UITableViewCell {
         screenshot1imageView.image = nil
         screenshot2imageView.image = nil
         screenshot3imageView.image = nil
+
+        let imageLoader = factory.imageLoader
 
         appIconUrl = app.artworkUrl100
         imageLoader.getImage(forUrl: app.artworkUrl100) { [weak self] result in

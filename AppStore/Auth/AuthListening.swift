@@ -6,7 +6,7 @@ protocol AuthListening {
 }
 
 protocol AuthListeningDelegate: AnyObject {
-    func userDidLogIn(_ listener: AuthListening, uid: String)
+    func userDidLogIn(_ listener: AuthListening, user: AppStore.User)
     func userDidLogOut(_ listener: AuthListening)
 }
 
@@ -24,8 +24,9 @@ class AuthListener: AuthListening {
             guard let `self` = self else {
                 return
             }
-            if let uid = user?.uid {
-                self.delegate?.userDidLogIn(self, uid: uid)
+            if let user = user {
+                let newUser = AppStore.User(uid: user.uid, email: user.email ?? "")
+                self.delegate?.userDidLogIn(self, user: newUser)
             } else {
                 self.delegate?.userDidLogOut(self)
             }

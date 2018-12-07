@@ -81,7 +81,7 @@ extension AppDetailScreenshotsCell: UICollectionViewDataSource {
         }
         let screenshotUrl = screenshotUrls[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppDetailScreenshotCell.reuseIdentifier, for: indexPath) as! AppDetailScreenshotCell
-        cell.load(screenshotUrl: screenshotUrl, imageLoader: factory.imageLoader)
+        cell.load(screenshotUrl: screenshotUrl, factory: factory)
         return cell
     }
 }

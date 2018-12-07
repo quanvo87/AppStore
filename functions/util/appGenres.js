@@ -1,7 +1,5 @@
 exports.appGenres = [
-    'Books',
     'Business',
-    'Catalogs',
     'Education',
     'Entertainment',
     'Finance',

@@ -12,7 +12,7 @@ class AppDetailInfoCell: UITableViewCell {
         selectionStyle = .none
     }
 
-    func load(title: String, detail: String) {
+    func load(title: String, detail: String?) {
         self.titleLabel.text = title
         self.detailLabel.text = detail
     }

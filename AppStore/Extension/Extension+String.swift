@@ -9,7 +9,10 @@ extension String {
         return formatter
     }()
 
-    var toMB: String {
-        return String.byteCountFormatter.string(fromByteCount: Int64(self)!)
+    var toMB: String? {
+        guard let byteCount = Int64(self) else {
+            return nil
+        }
+        return String.byteCountFormatter.string(fromByteCount: byteCount)
     }
 }

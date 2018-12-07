@@ -20,7 +20,7 @@ extension URLSession: NewServiceProtocol {
                 return
             }
             guard let data = data else {
-                completion(.failure(CustomError.noData))
+                completion(.failure(CustomError.invalidData))
                 return
             }
             do {
@@ -32,6 +32,7 @@ extension URLSession: NewServiceProtocol {
                 completion(.failure(error))
             }
             }.resume()
+        finishTasksAndInvalidate()
     }
 }
 

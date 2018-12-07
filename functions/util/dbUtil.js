@@ -68,3 +68,34 @@ exports.getAppsForGenre = genre =>
       })
       .catch(error => reject(error))
   )
+
+exports.incrementAppViewCount = trackId => {
+  const ref = db.collection('app').doc(trackId)
+  let newViewCount
+  return new Promise((resolve, reject) =>
+    db
+      .runTransaction(transaction =>
+        transaction.get(ref).then(doc => {
+          const viewCount = doc.data().viewCount
+          newViewCount = isNaN(viewCount) ? 1 : viewCount + 1
+          return transaction.update(ref, { viewCount: newViewCount })
+        })
+      )
+      .then(() => resolve(newViewCount))
+      .catch(error => reject(error))
+  )
+}
+
+exports.getPopularApps = () =>
+  new Promise((resolve, rejcet) => {
+    db.collection('app')
+      .orderBy('viewCount', 'desc')
+      .limit(querySize)
+      .get()
+      .then(snapshot => {
+        const apps = []
+        snapshot.forEach(doc => apps.push(doc.data()))
+        return resolve(apps)
+      })
+      .catch(error => rejcet(error))
+  })

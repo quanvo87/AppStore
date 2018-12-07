@@ -15,10 +15,10 @@ class AppDetailScreenshotCell: UICollectionViewCell {
         screenshotImageView.contentMode = .scaleAspectFill
     }
     
-    func load(screenshotUrl: String, imageLoader: ImageLoading) {
+    func load(screenshotUrl: String, factory: Factory) {
         screenshotImageView.image = nil
         self.screenshotUrl = screenshotUrl
-        imageLoader.getImage(forUrl: screenshotUrl) { [weak self] result in
+        factory.imageLoader.getImage(forUrl: screenshotUrl) { [weak self] result in
             switch result {
             case .failure(let error):
                 print(error)

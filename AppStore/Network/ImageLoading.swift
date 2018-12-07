@@ -24,7 +24,7 @@ extension URLSession: ImageLoading {
                 return
             }
             guard let data = data else {
-                completion(.failure(CustomError.noData))
+                completion(.failure(CustomError.invalidData))
                 return
             }
             guard let image = UIImage(data: data) else {
@@ -36,5 +36,6 @@ extension URLSession: ImageLoading {
                 completion(.success((urlString, image)))
             }
         }.resume()
+        finishTasksAndInvalidate()
     }
 }
