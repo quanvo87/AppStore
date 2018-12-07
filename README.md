@@ -35,7 +35,7 @@ Quan Vo
 
 Further investigate known issues:
  - URLSession memory leak
- - SearchController memory leak
+ - SearchController memory leak (haven't been able to recreate)
 
 Things to add:
 
