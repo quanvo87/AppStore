@@ -1,0 +1,23 @@
+exports.appGenres = [
+    'Books',
+    'Business',
+    'Catalogs',
+    'Education',
+    'Entertainment',
+    'Finance',
+    'Games',
+    'Health & Fitness',
+    'Lifestyle',
+    'Medical',
+    'Music',
+    'Navigation',
+    'News',
+    'Photo & Video',
+    'Productivity',
+    'Reference',
+    'Social Networking',
+    'Sports',
+    'Travel',
+    'Utilities',
+    'Weather'
+]

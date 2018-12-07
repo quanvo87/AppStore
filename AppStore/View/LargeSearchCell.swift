@@ -38,13 +38,13 @@ class LargeAppCell: UITableViewCell {
 
         appNameLabel.text = app.trackName
         sellerNameLabel.text = app.sellerName
-        ratingsLabel.text = String(app.averageUserRating) + " (" + String(app.userRatingCount) + ")"
+        ratingsLabel.text = String(app.averageUserRating) + " ✩ (" + String(app.userRatingCount) + ")"
         priceButton.setTitle(app.formattedPrice, for: .normal)
         priceButton.isHidden = app.formattedPrice == ""
 
         appIconImageView.image = nil
-        appIconUrl = app.artworkUrl60
-        imageLoader.getImage(forUrl: app.artworkUrl60) { [weak self] result in
+        appIconUrl = app.artworkUrl100
+        imageLoader.getImage(forUrl: app.artworkUrl100) { [weak self] result in
             switch result {
             case .failure(let error):
                 print(error)

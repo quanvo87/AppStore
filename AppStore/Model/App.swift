@@ -1,7 +1,8 @@
 struct App {
     let trackId: Int
     let trackName: String
-    let artworkUrl60: String
+    let artworkUrl100: String
+    let artworkUrl512: String
     let sellerName: String
     let formattedPrice: String
     let averageUserRating: Double
@@ -13,6 +14,7 @@ struct App {
     let currentVersionReleaseDate: String
     let releaseNotes: String
     let fileSizeBytes: String
+    let primaryGenreName: String
     let genres: [String]
     let releaseDate: String
     let viewCount: Int
@@ -23,7 +25,8 @@ extension App: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         trackId = try container.decodeIfPresent(Int.self, forKey: .trackId) ?? 0
         trackName = try container.decodeIfPresent(String.self, forKey: .trackName) ?? ""
-        artworkUrl60 = try container.decodeIfPresent(String.self, forKey: .artworkUrl60) ?? ""
+        artworkUrl100 = try container.decodeIfPresent(String.self, forKey: .artworkUrl100) ?? ""
+        artworkUrl512 = try container.decodeIfPresent(String.self, forKey: .artworkUrl512) ?? ""
         sellerName = try container.decodeIfPresent(String.self, forKey: .sellerName) ?? ""
         formattedPrice = try container.decodeIfPresent(String.self, forKey: .formattedPrice) ?? ""
         averageUserRating = try container.decodeIfPresent(Double.self, forKey: .averageUserRating) ?? 0
@@ -35,6 +38,7 @@ extension App: Codable {
         currentVersionReleaseDate = try container.decodeIfPresent(String.self, forKey: .currentVersionReleaseDate) ?? ""
         releaseNotes = try container.decodeIfPresent(String.self, forKey: .releaseNotes) ?? ""
         fileSizeBytes = try container.decodeIfPresent(String.self, forKey: .fileSizeBytes) ?? ""
+        primaryGenreName = try container.decodeIfPresent(String.self, forKey: .primaryGenreName) ?? ""
         genres = try container.decodeIfPresent([String].self, forKey: .genres) ?? []
         releaseDate = try container.decodeIfPresent(String.self, forKey: .releaseDate) ?? ""
         viewCount = try container.decodeIfPresent(Int.self, forKey: .viewCount) ?? 0

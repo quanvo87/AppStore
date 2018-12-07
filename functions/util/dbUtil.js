@@ -53,3 +53,18 @@ exports.getNewestApps = () =>
       })
       .catch(error => reject(error))
   )
+
+exports.getAppsForGenre = genre =>
+  new Promise((resolve, reject) =>
+    db
+      .collection('app')
+      .where('primaryGenreName', '==', genre)
+      .limit(querySize)
+      .get()
+      .then(snapshot => {
+        const apps = []
+        snapshot.forEach(doc => apps.push(doc.data()))
+        return resolve(apps)
+      })
+      .catch(error => reject(error))
+  )

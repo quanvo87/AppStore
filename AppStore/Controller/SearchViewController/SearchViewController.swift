@@ -7,10 +7,12 @@ protocol SearchVCDelegate: AnyObject {
 class SearchViewController: UIViewController {
     let tableView = UITableView()
     let searchService: SearchServiceProtocol
+    let factory: Factory
     weak var delegate: SearchVCDelegate?
 
     init(searchService: SearchServiceProtocol, factory: Factory) {
         self.searchService = searchService
+        self.factory = factory
 
         super.init(nibName: nil, bundle: nil)
 

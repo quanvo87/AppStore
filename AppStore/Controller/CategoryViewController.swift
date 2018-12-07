@@ -1,20 +1,18 @@
 import UIKit
 
-class NewViewController: UIViewController {
+class CategoryViewController: UIViewController {
     private let tableView = UITableView()
-    private let newService: NewServiceProtocol
-    private let factory: Factory
+    private let categoriesService: CategoriesServiceProtocol
     private let imageLoader: ImageLoading
 
-    init(newService: NewServiceProtocol, factory: Factory) {
-        self.newService = newService
-        self.factory = factory
-        imageLoader = factory.imageLoader
+    init(category: String, categoriesService: CategoriesServiceProtocol, imageLoader: ImageLoading) {
+        self.categoriesService = categoriesService
+        self.imageLoader = imageLoader
 
         super.init(nibName: nil, bundle: nil)
 
-        navigationItem.title = "Newest Apps"
-    
+        navigationItem.title = category
+
         tableView.dataSource = self
         tableView.delegate = self
         tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
@@ -26,33 +24,29 @@ class NewViewController: UIViewController {
         )
 
         view.addSubview(tableView)
-    }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        newService.getNewestApps(offset: 0) { [weak self] result in
+        categoriesService.getAppsForCategory(category) { [weak self] result in
             switch result {
             case .failure(let error):
-                self?.showAlert(title: "Error Getting Newest Apps", message: error.localizedDescription)
+                self?.showAlert(title: "Error Getting Apps", message: error.localizedDescription)
             case .success(let apps):
                 self?.apps = apps
             }
         }
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    var apps = [App]() {
+    private var apps = [App]() {
         didSet {
             tableView.reloadData()
         }
     }
 }
 
-extension NewViewController: UITableViewDataSource {
+extension CategoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return apps.count
     }
@@ -65,15 +59,8 @@ extension NewViewController: UITableViewDataSource {
     }
 }
 
-extension NewViewController: UITableViewDelegate {
+extension CategoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let app = apps[indexPath.row]
-        let vc = factory.makeAppDetailViewController(app: app)
-        navigationController?.pushViewController(vc, animated: true)
     }
 }

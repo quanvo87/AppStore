@@ -8,7 +8,8 @@ extension SearchResultsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if isShowingSearchResults {
-            print("hi")
+            let app = searchResults[indexPath.row]
+            delegate?.controller(self, didSelectApp: app)
         } else {
             let searchPreview = searchPreviews[indexPath.row]
             delegate?.controller(self, didSelectSearchPreview: searchPreview)

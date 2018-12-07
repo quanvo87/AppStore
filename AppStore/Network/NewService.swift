@@ -31,7 +31,7 @@ extension URLSession: NewServiceProtocol {
             } catch {
                 completion(.failure(error))
             }
-        }.resume()
+            }.resume()
     }
 }
 

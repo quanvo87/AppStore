@@ -14,13 +14,13 @@ class Factory {
     func makeTabBarController(uid: String) -> UITabBarController {
         let tabBarController = UITabBarController(nibName: nil, bundle: nil)
 
-        let newVC = NewViewController(newService: urlSession, imageLoader: imageLoader)
+        let newVC = NewViewController(newService: urlSession, factory: self)
         newVC.tabBarItem = UITabBarItem(title: "New", image: UIImage(named: "new"), tag: 0)
 
         let popularVC = PopularViewController()
         popularVC.tabBarItem = UITabBarItem(title: "Popular", image: UIImage(named: "popular"), tag: 1)
 
-        let categoriesVC = CategoriesViewController()
+        let categoriesVC = CategoriesViewController(categoriesService: urlSession, factory: self)
         categoriesVC.tabBarItem = UITabBarItem(title: "Categories", image: UIImage(named: "categories"), tag: 2)
 
         let searchService = SearchService(urlSession: urlSession, uid: uid)
@@ -38,5 +38,9 @@ class Factory {
         searchVC.hideNavigationBarBorder()
 
         return tabBarController
+    }
+
+    func makeAppDetailViewController(app: App) -> AppDetailViewController {
+        return AppDetailViewController(app: app, factory: self)
     }
 }

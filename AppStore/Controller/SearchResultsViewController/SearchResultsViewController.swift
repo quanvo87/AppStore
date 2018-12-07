@@ -1,18 +1,23 @@
 import UIKit
 
+// todo: maybe add method here for passing back an app was tapped
+// parent view can push app detail vc onto its nav ctrl
 protocol SearchResultsVCDelegate: AnyObject {
     func controller(_ controller: SearchResultsViewController, didSelectSearchPreview searchPreview: String)
     func controller(_ controller: SearchResultsViewController, didStartNewSearch query: String)
+    func controller(_ controller: SearchResultsViewController, didSelectApp app: App)
 }
 
 class SearchResultsViewController: UIViewController {
     let tableView = UITableView()
     let searchService: SearchServiceProtocol
+    let factory: Factory
     let imageLoader: ImageLoading
     weak var delegate: SearchResultsVCDelegate?
 
     init(searchService: SearchServiceProtocol, factory: Factory, delegate: SearchResultsVCDelegate) {
         self.searchService = searchService
+        self.factory = factory
         self.imageLoader = factory.imageLoader
         self.delegate = delegate
 
