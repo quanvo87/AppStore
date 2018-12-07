@@ -33,7 +33,6 @@ extension URLSession: CategoriesServiceProtocol {
                 completion(.failure(error))
             }
             }.resume()
-        finishTasksAndInvalidate()
     }
 
     func getAppsForCategory(_ category: String, completion: @escaping (Result<[App]>) -> Void) {
@@ -63,7 +62,6 @@ extension URLSession: CategoriesServiceProtocol {
                 completion(.failure(error))
             }
             }.resume()
-        finishTasksAndInvalidate()
     }
 }
 

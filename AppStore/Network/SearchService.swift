@@ -46,7 +46,6 @@ class SearchService: SearchServiceProtocol {
                     completion(.failure(error))
                 }
                 }.resume()
-            self?.urlSession.finishTasksAndInvalidate()
         }
 
         pendingWorkItem = newWorkItem
@@ -81,7 +80,6 @@ class SearchService: SearchServiceProtocol {
                 completion(.failure(error))
             }
         }.resume()
-        urlSession.finishTasksAndInvalidate()
     }
 }
 

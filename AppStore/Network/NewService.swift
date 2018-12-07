@@ -32,7 +32,6 @@ extension URLSession: NewServiceProtocol {
                 completion(.failure(error))
             }
             }.resume()
-        finishTasksAndInvalidate()
     }
 }
 

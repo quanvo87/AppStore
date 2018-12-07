@@ -33,11 +33,25 @@ class NewViewController: UIViewController {
                 self?.apps = apps
             }
         }
+
+        let logoutButton = UIBarButtonItem(
+            image: UIImage(named: "user"),
+            style: .plain,
+            target: self,
+            action: #selector(logout)
+        )
+        navigationItem.rightBarButtonItem = logoutButton
     }
     
     var apps = [App]() {
         didSet {
             tableView.reloadData()
+        }
+    }
+
+    @objc func logout() {
+        showAlert(title: "Log Out", message: "Do you want to log out?") { [weak self] _ in
+            self?.factory.authService.logOut()
         }
     }
 

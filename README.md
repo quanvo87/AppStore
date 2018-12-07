@@ -33,6 +33,10 @@ Quan Vo
 
 ## TODO
 
+Further investigate known issues:
+ - URLSession memory leak
+ - SearchController memory leak
+
 Things to add:
 
 - unit and UI tests

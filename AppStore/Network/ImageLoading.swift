@@ -36,6 +36,5 @@ extension URLSession: ImageLoading {
                 completion(.success((urlString, image)))
             }
         }.resume()
-        finishTasksAndInvalidate()
     }
 }

@@ -31,7 +31,6 @@ extension URLSession: PopularServiceProtocol {
                 completion(.success(newViewCount))
             }
             }.resume()
-        finishTasksAndInvalidate()
     }
 
     func getPopularApps(completion: @escaping (Result<[App]>) -> Void) {
@@ -61,7 +60,6 @@ extension URLSession: PopularServiceProtocol {
                 completion(.failure(error))
             }
             }.resume()
-        finishTasksAndInvalidate()
     }
 }
 

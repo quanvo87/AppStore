@@ -3,21 +3,21 @@ import UIKit
 class CategoriesViewController: UIViewController {
     private let tableView = UITableView()
     private let factory: Factory
-
+    
     init(factory: Factory) {
         self.factory = factory
-
+        
         super.init(nibName: nil, bundle: nil)
-
+        
         navigationItem.title = "Categories"
-
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         tableView.tableFooterView = UIView()
-
+        
         view.addSubview(tableView)
-
+        
         factory.categoriesService.getCategories { [weak self] result in
             switch result {
             case .failure(let error):
@@ -26,16 +26,30 @@ class CategoriesViewController: UIViewController {
                 self?.categories = categories
             }
         }
+        
+        let logoutButton = UIBarButtonItem(
+            image: UIImage(named: "user"),
+            style: .plain,
+            target: self,
+            action: #selector(logout)
+        )
+        navigationItem.rightBarButtonItem = logoutButton
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     private var categories = [String]() {
         didSet {
             tableView.reloadData()
         }
+    }
+    
+    @objc func logout() {
+        showAlert(title: "Log Out", message: "Do you want to log out?") { [weak self] _ in
+            self?.factory.authService.logOut()
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
@@ -43,7 +57,7 @@ extension CategoriesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         let category = categories[indexPath.row]

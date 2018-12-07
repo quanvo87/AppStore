@@ -1,18 +1,17 @@
 import UIKit
 
 class Factory {
-    private let authService: AuthServiceProtocol
     private let urlSession: URLSession
-    let user: User
+    private let user: User
+    let authService: AuthServiceProtocol
     let searchService: SearchServiceProtocol
     
-    init(authService: AuthServiceProtocol = AuthService(),
-         urlSession: URLSession = .shared,
-         user: User) {
+    init(user: User,
+         authService: AuthServiceProtocol = AuthService(),
+         urlSession: URLSession = .shared) {
+        self.user = user
         self.authService = authService
         self.urlSession = urlSession
-        self.user = user
-
         searchService = SearchService(urlSession: urlSession, uid: user.uid)
     }
 
