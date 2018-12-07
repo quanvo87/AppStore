@@ -3,10 +3,12 @@ import UIKit
 class AppDetailViewController: UIViewController {
     private let tableView = UITableView()
     private let app: App
+    private let factory: Factory
     private let imageLoader: ImageLoading
 
     init(app: App, factory: Factory) {
         self.app = app
+        self.factory = factory
         imageLoader = factory.imageLoader
 
         super.init(nibName: nil, bundle: nil)
@@ -24,6 +26,10 @@ class AppDetailViewController: UIViewController {
         tableView.register(
             UINib(nibName: AppDetailRatingsCell.reuseIdentifier, bundle: nil),
             forCellReuseIdentifier: AppDetailRatingsCell.reuseIdentifier
+        )
+        tableView.register(
+            UINib(nibName: AppDetailScreenshotsCell.reuseIdentifier, bundle: nil),
+            forCellReuseIdentifier: AppDetailScreenshotsCell.reuseIdentifier
         )
 
         tableView.reloadData()
@@ -88,7 +94,10 @@ extension AppDetailViewController: UITableViewDataSource {
             cell.selectionStyle = .none
             return cell
         case .screenshots:
-            break
+            let cell = tableView.dequeueReusableCell(withIdentifier: AppDetailScreenshotsCell.reuseIdentifier) as! AppDetailScreenshotsCell
+            cell.load(screenshotUrls: app.screenshotUrls, factory: factory)
+            cell.selectionStyle = .none
+            return cell
         case .description:
             break
         case .version:

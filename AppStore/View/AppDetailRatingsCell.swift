@@ -8,6 +8,14 @@ class AppDetailRatingsCell: UITableViewCell {
     @IBOutlet weak var viewCountLabel: UILabel!
     @IBOutlet weak var contentRatingLabel: UILabel!
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        ratingLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        viewCountLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        contentRatingLabel.font = UIFont.boldSystemFont(ofSize: 20)
+    }
+
     func load(app: App) {
         ratingLabel.text = String(app.averageUserRating) + " ✩"
         ratingsCountLabel.text = String(app.userRatingCount) + " Ratings"

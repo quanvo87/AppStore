@@ -8,23 +8,19 @@ class AppDetailHeaderCell: UITableViewCell {
     @IBOutlet weak var sellerNameLabel: UILabel!
     @IBOutlet weak var priceButton: UIButton!
 
-    private var configured = false
-    private func configureViews() {
-        if !configured {
-            appIconImageView.layer.cornerRadius = 15
-            appIconImageView.clipsToBounds = true
-            priceButton.layer.cornerRadius = 15
-            priceButton.setTitleColor(.white, for: .normal)
-            priceButton.backgroundColor = UIColor.tintColor
-            configured = true
-        }
-    }
-
     private var appIconUrl: String?
 
-    func load(app: App, imageLoader: ImageLoading) {
-        configureViews()
+    override func awakeFromNib() {
+        super.awakeFromNib()
 
+        appIconImageView.layer.cornerRadius = 15
+        appIconImageView.clipsToBounds = true
+        priceButton.layer.cornerRadius = 15
+        priceButton.setTitleColor(.white, for: .normal)
+        priceButton.backgroundColor = UIColor.tintColor
+    }
+
+    func load(app: App, imageLoader: ImageLoading) {
         appNameLabel.text = app.trackName
         sellerNameLabel.text = app.sellerName
         priceButton.setTitle(app.formattedPrice, for: .normal)

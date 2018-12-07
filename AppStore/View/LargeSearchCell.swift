@@ -17,32 +17,36 @@ class LargeAppCell: UITableViewCell {
     private var screenshot2Url: String?
     private var screenshot3Url: String?
 
-    private var configured = false
-    private func configureViews() {
-        if !configured {
-            appIconImageView.layer.cornerRadius = 15
-            appIconImageView.clipsToBounds = true
-            priceButton.layer.cornerRadius = 15
-            screenshot1imageView.layer.cornerRadius = 10
-            screenshot1imageView.clipsToBounds = true
-            screenshot2imageView.layer.cornerRadius = 10
-            screenshot2imageView.clipsToBounds = true
-            screenshot3imageView.layer.cornerRadius = 10
-            screenshot3imageView.clipsToBounds = true
-            configured = true
-        }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        appIconImageView.layer.cornerRadius = 15
+        appIconImageView.clipsToBounds = true
+        priceButton.layer.cornerRadius = 15
+        screenshot1imageView.layer.cornerRadius = 10
+        screenshot1imageView.clipsToBounds = true
+        screenshot1imageView.contentMode = .scaleAspectFill
+        screenshot2imageView.layer.cornerRadius = 10
+        screenshot2imageView.clipsToBounds = true
+        screenshot2imageView.contentMode = .scaleAspectFill
+        screenshot3imageView.layer.cornerRadius = 10
+        screenshot3imageView.clipsToBounds = true
+        screenshot3imageView.contentMode = .scaleAspectFill
     }
 
     func load(app: App, imageLoader: ImageLoading) {
-        configureViews()
-
         appNameLabel.text = app.trackName
         sellerNameLabel.text = app.sellerName
         ratingsLabel.text = String(app.averageUserRating) + " ✩ (" + String(app.userRatingCount) + ")"
+
         priceButton.setTitle(app.formattedPrice, for: .normal)
         priceButton.isHidden = app.formattedPrice == ""
 
         appIconImageView.image = nil
+        screenshot1imageView.image = nil
+        screenshot2imageView.image = nil
+        screenshot3imageView.image = nil
+
         appIconUrl = app.artworkUrl100
         imageLoader.getImage(forUrl: app.artworkUrl100) { [weak self] result in
             switch result {
@@ -54,10 +58,6 @@ class LargeAppCell: UITableViewCell {
                 }
             }
         }
-
-        screenshot1imageView.image = nil
-        screenshot2imageView.image = nil
-        screenshot3imageView.image = nil
 
         let screenshotUrls = app.screenshotUrls
 

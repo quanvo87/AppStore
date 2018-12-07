@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AppDetailScreenshotCell" id="ftz-3t-Ve4" customClass="AppDetailScreenshotCell" customModule="AppStore" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="195" height="184"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="195" height="184"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fe9-0E-xkm">
+                        <rect key="frame" x="0.0" y="0.0" width="195" height="184"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Oja-az-RRa" firstAttribute="trailing" secondItem="fe9-0E-xkm" secondAttribute="trailing" id="Lau-mz-wkE"/>
+                <constraint firstItem="fe9-0E-xkm" firstAttribute="top" secondItem="ftz-3t-Ve4" secondAttribute="top" id="Uxd-ja-qkI"/>
+                <constraint firstItem="fe9-0E-xkm" firstAttribute="leading" secondItem="ftz-3t-Ve4" secondAttribute="leading" id="jhS-zs-OZC"/>
+                <constraint firstItem="Oja-az-RRa" firstAttribute="bottom" secondItem="fe9-0E-xkm" secondAttribute="bottom" id="pcb-Wa-QOG"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Oja-az-RRa"/>
+            <size key="customSize" width="195" height="184"/>
+            <connections>
+                <outlet property="screenshotImageView" destination="fe9-0E-xkm" id="XJz-vx-KsA"/>
+            </connections>
+            <point key="canvasLocation" x="-143.19999999999999" y="83.658170914542737"/>
+        </collectionViewCell>
+    </objects>
+</document>
