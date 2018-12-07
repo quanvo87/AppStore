@@ -2,19 +2,19 @@ import UIKit
 
 class AppDetailScreenshotCell: UICollectionViewCell {
     static let reuseIdentifier = String(describing: AppDetailScreenshotCell.self)
-
+    
     @IBOutlet weak var screenshotImageView: UIImageView!
-
+    
     private var screenshotUrl: String?
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        
         screenshotImageView.layer.cornerRadius = 15
         screenshotImageView.clipsToBounds = true
         screenshotImageView.contentMode = .scaleAspectFill
     }
-
+    
     func load(screenshotUrl: String, imageLoader: ImageLoading) {
         screenshotImageView.image = nil
         self.screenshotUrl = screenshotUrl
@@ -28,6 +28,6 @@ class AppDetailScreenshotCell: UICollectionViewCell {
                 }
             }
         }
-
+        
     }
 }

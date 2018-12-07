@@ -1,7 +1,7 @@
 import UIKit
 
 class AppDetailScreenshotsCell: UITableViewCell {
-    static var reuseIdentifier = String(describing: AppDetailScreenshotsCell.self)
+    static let reuseIdentifier = String(describing: AppDetailScreenshotsCell.self)
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
@@ -12,6 +12,8 @@ class AppDetailScreenshotsCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        selectionStyle = .none
 
         collectionView.dataSource = self
         collectionView.register(
@@ -60,7 +62,7 @@ class AppDetailScreenshotsCell: UITableViewCell {
 
 private extension AppDetailScreenshotsCell {
     var wideItemSize: CGSize {
-        return .init(width: UIScreen.main.bounds.width - 40, height: 200)
+        return .init(width: UIScreen.main.bounds.width - 60, height: 200)
     }
 
     var tallItemSize: CGSize {

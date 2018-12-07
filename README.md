@@ -12,3 +12,5 @@
     - on each keystroke in search bar, this class cancels the pending work item
     - only makes http request after 250 ms delay
     - reduces amount of unnecessary requests
+
+- properly displays wide vs tall screen shots in preview and detail cells

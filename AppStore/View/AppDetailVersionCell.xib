@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AppDetailVersionCell" rowHeight="298" id="C71-gA-L8A" customClass="AppDetailVersionCell" customModule="AppStore" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="298"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="C71-gA-L8A" id="PQP-pG-8e1">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="297.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Version" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5l-NG-gdR">
+                        <rect key="frame" x="20" y="47" width="49" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release notes" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nrr-5T-yfw">
+                        <rect key="frame" x="20" y="74" width="335" height="203.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="What's New" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Z1-Oa-Sa1">
+                        <rect key="frame" x="20" y="10" width="116" height="27"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="e5l-NG-gdR" firstAttribute="top" secondItem="2Z1-Oa-Sa1" secondAttribute="bottom" constant="10" id="53V-Yw-Rfe"/>
+                    <constraint firstAttribute="bottom" secondItem="nrr-5T-yfw" secondAttribute="bottom" constant="20" id="Ah2-VC-mh4"/>
+                    <constraint firstItem="2Z1-Oa-Sa1" firstAttribute="top" secondItem="PQP-pG-8e1" secondAttribute="top" constant="10" id="QHv-7Y-XrK"/>
+                    <constraint firstItem="2Z1-Oa-Sa1" firstAttribute="leading" secondItem="PQP-pG-8e1" secondAttribute="leading" constant="20" id="Rtx-Yy-M2l"/>
+                    <constraint firstAttribute="trailing" secondItem="nrr-5T-yfw" secondAttribute="trailing" constant="20" id="UMf-NM-sie"/>
+                    <constraint firstItem="nrr-5T-yfw" firstAttribute="top" secondItem="e5l-NG-gdR" secondAttribute="bottom" constant="10" id="Y3I-O5-XbR"/>
+                    <constraint firstItem="nrr-5T-yfw" firstAttribute="leading" secondItem="e5l-NG-gdR" secondAttribute="leading" id="dxm-bU-AQU"/>
+                    <constraint firstItem="e5l-NG-gdR" firstAttribute="leading" secondItem="2Z1-Oa-Sa1" secondAttribute="leading" id="iRg-qX-IPD"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="releaseNotesLabel" destination="nrr-5T-yfw" id="UjC-Hs-308"/>
+                <outlet property="versionLabel" destination="e5l-NG-gdR" id="pWF-Wt-c6Q"/>
+                <outlet property="whatsNewLabel" destination="2Z1-Oa-Sa1" id="I88-ke-gzP"/>
+            </connections>
+            <point key="canvasLocation" x="-228" y="-8.995502248875562"/>
+        </tableViewCell>
+    </objects>
+</document>

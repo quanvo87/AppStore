@@ -31,6 +31,18 @@ class AppDetailViewController: UIViewController {
             UINib(nibName: AppDetailScreenshotsCell.reuseIdentifier, bundle: nil),
             forCellReuseIdentifier: AppDetailScreenshotsCell.reuseIdentifier
         )
+        tableView.register(
+            UINib(nibName: AppDetailDescriptionCell.reuseIdentifier, bundle: nil),
+            forCellReuseIdentifier: AppDetailDescriptionCell.reuseIdentifier
+        )
+        tableView.register(
+            UINib(nibName: AppDetailVersionCell.reuseIdentifier, bundle: nil),
+            forCellReuseIdentifier: AppDetailVersionCell.reuseIdentifier
+        )
+        tableView.register(
+            UINib(nibName: AppDetailInfoCell.reuseIdentifier, bundle: nil),
+            forCellReuseIdentifier: AppDetailInfoCell.reuseIdentifier
+        )
 
         tableView.reloadData()
 
@@ -86,26 +98,50 @@ extension AppDetailViewController: UITableViewDataSource {
         case .header:
             let cell = tableView.dequeueReusableCell(withIdentifier: AppDetailHeaderCell.reuseIdentifier) as! AppDetailHeaderCell
             cell.load(app: app, imageLoader: imageLoader)
-            cell.selectionStyle = .none
             return cell
         case .ratings:
             let cell = tableView.dequeueReusableCell(withIdentifier: AppDetailRatingsCell.reuseIdentifier) as! AppDetailRatingsCell
             cell.load(app: app)
-            cell.selectionStyle = .none
             return cell
         case .screenshots:
             let cell = tableView.dequeueReusableCell(withIdentifier: AppDetailScreenshotsCell.reuseIdentifier) as! AppDetailScreenshotsCell
             cell.load(screenshotUrls: app.screenshotUrls, factory: factory)
-            cell.selectionStyle = .none
             return cell
         case .description:
-            break
+            let cell = tableView.dequeueReusableCell(withIdentifier: AppDetailDescriptionCell.reuseIdentifier) as! AppDetailDescriptionCell
+            cell.load(description: app.description)
+            return cell
         case .version:
-            break
+            let cell = tableView.dequeueReusableCell(withIdentifier: AppDetailVersionCell.reuseIdentifier) as! AppDetailVersionCell
+            cell.load(app: app)
+            return cell
         case .info:
-            break
+            switch indexPath.row {
+            case 0:
+                let cell = UITableViewCell()
+                cell.selectionStyle = .none
+                cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 22)
+                cell.textLabel?.text = "Information"
+                return cell
+            case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: AppDetailInfoCell.reuseIdentifier) as! AppDetailInfoCell
+                cell.load(title: "Seller", detail: app.sellerName)
+                return cell
+            case 2:
+                let cell = tableView.dequeueReusableCell(withIdentifier: AppDetailInfoCell.reuseIdentifier) as! AppDetailInfoCell
+                cell.load(title: "Size", detail: app.fileSizeBytes.toMB)
+                return cell
+            case 3:
+                let cell = tableView.dequeueReusableCell(withIdentifier: AppDetailInfoCell.reuseIdentifier) as! AppDetailInfoCell
+                cell.load(title: "Category", detail: app.primaryGenreName)
+                return cell
+            case 4:
+                let cell = tableView.dequeueReusableCell(withIdentifier: AppDetailInfoCell.reuseIdentifier) as! AppDetailInfoCell
+                cell.load(title: "Age Rating", detail: app.trackContentRating)
+                return cell
+            default:
+                return UITableViewCell()
+            }
         }
-
-        return UITableViewCell()
     }
 }
