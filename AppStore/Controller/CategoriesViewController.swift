@@ -35,7 +35,12 @@ class CategoriesViewController: UIViewController {
         )
         navigationItem.rightBarButtonItem = logoutButton
     }
-    
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+
     private var categories = [String]() {
         didSet {
             tableView.reloadData()

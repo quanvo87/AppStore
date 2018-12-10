@@ -2,15 +2,17 @@ import UIKit
 
 class CategoryViewController: UIViewController {
     private let tableView = UITableView()
+    private let category: String
     private let factory: Factory
-
+    
     init(category: String, factory: Factory) {
+        self.category = category
         self.factory = factory
-
+        
         super.init(nibName: nil, bundle: nil)
-
-        navigationItem.title = category
-
+        
+        navigationItem.title = category + " By Search Date"
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
@@ -20,9 +22,14 @@ class CategoryViewController: UIViewController {
             UINib(nibName: LargeAppCell.reuseIdentifier, bundle: nil),
             forCellReuseIdentifier: LargeAppCell.reuseIdentifier
         )
-
+        
         view.addSubview(tableView)
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
+        
         factory.categoriesService.getAppsForCategory(category) { [weak self] result in
             switch result {
             case .failure(let error):
@@ -32,13 +39,13 @@ class CategoryViewController: UIViewController {
             }
         }
     }
-
+    
     private var apps = [App]() {
         didSet {
             tableView.reloadData()
         }
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -48,7 +55,7 @@ extension CategoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return apps.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: LargeAppCell.reuseIdentifier) as! LargeAppCell
         let app = apps[indexPath.row]
@@ -61,10 +68,10 @@ extension CategoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-
+        
         let app = apps[indexPath.row]
         let vc = factory.makeAppDetailViewController(app: app)
         navigationController?.pushViewController(vc, animated: true)

@@ -32,8 +32,10 @@ class MostViewedViewController: UIViewController {
         navigationItem.rightBarButtonItem = logoutButton
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        navigationController?.navigationBar.prefersLargeTitles = false
 
         factory.mostViewedService.getMostViewedApps { [weak self] result in
             switch result {

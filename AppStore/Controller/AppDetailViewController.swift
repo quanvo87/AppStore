@@ -67,11 +67,6 @@ class AppDetailViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = true
-    }
-
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

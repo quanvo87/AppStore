@@ -1,7 +1,7 @@
 const admin = require('firebase-admin')
 const db = require('../index').db
 
-const querySize = 20
+const querySize = 50
 
 exports.saveSearch = query =>
   db.collection('search').add({
@@ -25,6 +25,7 @@ exports.getRecentSearches = () =>
     db
       .collection('search')
       .orderBy('date', 'desc')
+      .limit(querySize)
       .get()
       .then(snapshot => {
         const recentSearches = []
@@ -39,7 +40,7 @@ exports.getAppsBySearchDate = () =>
     db
       .collection('app')
       .orderBy('searchDate', 'desc')
-      .limit(querySize)
+      .limit(querySize * 2)
       .get()
       .then(snapshot => {
         const apps = []
@@ -49,12 +50,11 @@ exports.getAppsBySearchDate = () =>
       .catch(error => reject(error))
   )
 
-exports.getAppsForGenre = genre =>
+exports.getAppsByReleaseDate = () =>
   new Promise((resolve, reject) =>
     db
       .collection('app')
-      .where('primaryGenreName', '==', genre)
-      .orderBy('searchDate', 'desc')
+      .orderBy('currentVersionReleaseDate', 'desc')
       .limit(querySize)
       .get()
       .then(snapshot => {
@@ -95,3 +95,19 @@ exports.getMostViewedApps = () =>
       })
       .catch(error => rejcet(error))
   })
+
+exports.getAppsForGenre = genre =>
+  new Promise((resolve, reject) =>
+    db
+      .collection('app')
+      .where('primaryGenreName', '==', genre)
+      .orderBy('searchDate', 'desc')
+      .limit(querySize * 2)
+      .get()
+      .then(snapshot => {
+        const apps = []
+        snapshot.forEach(doc => apps.push(doc.data()))
+        return resolve(apps)
+      })
+      .catch(error => reject(error))
+  )

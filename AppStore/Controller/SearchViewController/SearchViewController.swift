@@ -36,6 +36,9 @@ class SearchViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        navigationController?.navigationBar.prefersLargeTitles = true
+
         if #available(iOS 11.0, *) {
             navigationItem.hidesSearchBarWhenScrolling = false
         }
@@ -43,6 +46,7 @@ class SearchViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+
         if #available(iOS 11.0, *) {
             navigationItem.hidesSearchBarWhenScrolling = true
         }

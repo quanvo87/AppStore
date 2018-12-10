@@ -38,6 +38,8 @@
 		5983584221B76C7E00362AC5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983584121B76C7E00362AC5 /* LoginViewController.swift */; };
 		5983584421B76E0500362AC5 /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983584321B76E0500362AC5 /* Extension+UIViewController.swift */; };
 		5983584621B76F8200362AC5 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983584521B76F8200362AC5 /* AuthService.swift */; };
+		5984542021BF0E3A00FD729F /* NewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5984541F21BF0E3A00FD729F /* NewService.swift */; };
+		599879B521BF110C00681F6E /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599879B421BF110C00681F6E /* NewViewController.swift */; };
 		59B0C52F21B74625004495F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0C52E21B74625004495F6 /* AppDelegate.swift */; };
 		59B0C53121B74625004495F6 /* RecentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0C53021B74625004495F6 /* RecentViewController.swift */; };
 		59B0C53321B74625004495F6 /* MostViewedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0C53221B74625004495F6 /* MostViewedViewController.swift */; };
@@ -122,6 +124,8 @@
 		5983584121B76C7E00362AC5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5983584321B76E0500362AC5 /* Extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
 		5983584521B76F8200362AC5 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		5984541F21BF0E3A00FD729F /* NewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewService.swift; sourceTree = "<group>"; };
+		599879B421BF110C00681F6E /* NewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewViewController.swift; sourceTree = "<group>"; };
 		59B0C52B21B74625004495F6 /* AppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59B0C52E21B74625004495F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59B0C53021B74625004495F6 /* RecentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentViewController.swift; sourceTree = "<group>"; };
@@ -332,6 +336,7 @@
 			children = (
 				5983584121B76C7E00362AC5 /* LoginViewController.swift */,
 				59B0C53021B74625004495F6 /* RecentViewController.swift */,
+				599879B421BF110C00681F6E /* NewViewController.swift */,
 				59B0C53221B74625004495F6 /* MostViewedViewController.swift */,
 				59B0C55F21B74C24004495F6 /* CategoriesViewController.swift */,
 				5956318A21B936D30010B2BE /* CategoryViewController.swift */,
@@ -346,9 +351,10 @@
 			isa = PBXGroup;
 			children = (
 				59B0C56421B74D1E004495F6 /* RecentService.swift */,
+				5984541F21BF0E3A00FD729F /* NewService.swift */,
 				59F8819D21BA74D500F21F1E /* MostViewedService.swift */,
-				5916D07521B7A7D800FD98DA /* SearchService.swift */,
 				5956318821B932060010B2BE /* CategoriesService.swift */,
+				5916D07521B7A7D800FD98DA /* SearchService.swift */,
 				592A6C2B21B8B51600AC2865 /* ImageLoading.swift */,
 			);
 			path = Network;
@@ -642,6 +648,8 @@
 				59D361F921B9B73D00BFA96E /* AppDetailHeaderCell.swift in Sources */,
 				5983584421B76E0500362AC5 /* Extension+UIViewController.swift in Sources */,
 				59B0C56E21B7563D004495F6 /* App.swift in Sources */,
+				599879B521BF110C00681F6E /* NewViewController.swift in Sources */,
+				5984542021BF0E3A00FD729F /* NewService.swift in Sources */,
 				59D0E52E21BA686F0023B55D /* AppDetailInfoCell.swift in Sources */,
 				5983584021B76A2700362AC5 /* AuthListening.swift in Sources */,
 				5916D07621B7A7D800FD98DA /* SearchService.swift in Sources */,

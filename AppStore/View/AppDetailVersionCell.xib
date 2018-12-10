@@ -18,8 +18,20 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="297.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Version" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5l-NG-gdR">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="What's New" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Z1-Oa-Sa1">
+                        <rect key="frame" x="20" y="10" width="116" height="27"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Version" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5l-NG-gdR">
                         <rect key="frame" x="20" y="47" width="49" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQR-RN-Wcc">
+                        <rect key="frame" x="89" y="47" width="266" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -30,25 +42,23 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="What's New" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Z1-Oa-Sa1">
-                        <rect key="frame" x="20" y="10" width="116" height="27"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="e5l-NG-gdR" firstAttribute="top" secondItem="2Z1-Oa-Sa1" secondAttribute="bottom" constant="10" id="53V-Yw-Rfe"/>
                     <constraint firstAttribute="bottom" secondItem="nrr-5T-yfw" secondAttribute="bottom" constant="20" id="Ah2-VC-mh4"/>
+                    <constraint firstAttribute="trailing" secondItem="dQR-RN-Wcc" secondAttribute="trailing" constant="20" id="Cuo-bw-kbU"/>
+                    <constraint firstItem="dQR-RN-Wcc" firstAttribute="leading" secondItem="e5l-NG-gdR" secondAttribute="trailing" constant="20" id="Hef-He-qkd"/>
                     <constraint firstItem="2Z1-Oa-Sa1" firstAttribute="top" secondItem="PQP-pG-8e1" secondAttribute="top" constant="10" id="QHv-7Y-XrK"/>
                     <constraint firstItem="2Z1-Oa-Sa1" firstAttribute="leading" secondItem="PQP-pG-8e1" secondAttribute="leading" constant="20" id="Rtx-Yy-M2l"/>
                     <constraint firstAttribute="trailing" secondItem="nrr-5T-yfw" secondAttribute="trailing" constant="20" id="UMf-NM-sie"/>
                     <constraint firstItem="nrr-5T-yfw" firstAttribute="top" secondItem="e5l-NG-gdR" secondAttribute="bottom" constant="10" id="Y3I-O5-XbR"/>
+                    <constraint firstItem="dQR-RN-Wcc" firstAttribute="centerY" secondItem="e5l-NG-gdR" secondAttribute="centerY" id="ZPG-wq-Fs4"/>
                     <constraint firstItem="nrr-5T-yfw" firstAttribute="leading" secondItem="e5l-NG-gdR" secondAttribute="leading" id="dxm-bU-AQU"/>
                     <constraint firstItem="e5l-NG-gdR" firstAttribute="leading" secondItem="2Z1-Oa-Sa1" secondAttribute="leading" id="iRg-qX-IPD"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="releaseDateLabel" destination="dQR-RN-Wcc" id="qNB-Jy-n4K"/>
                 <outlet property="releaseNotesLabel" destination="nrr-5T-yfw" id="UjC-Hs-308"/>
                 <outlet property="versionLabel" destination="e5l-NG-gdR" id="pWF-Wt-c6Q"/>
                 <outlet property="whatsNewLabel" destination="2Z1-Oa-Sa1" id="I88-ke-gzP"/>

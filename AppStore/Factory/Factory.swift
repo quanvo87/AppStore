@@ -1,61 +1,57 @@
 import UIKit
 
 class Factory {
-    private let urlSession: URLSession
-    private let user: User
+    let user: User
     let authService: AuthServiceProtocol
+    let recentService: RecentServiceProtocol
+    let newService: NewServiceProtocol
+    let mostViewedService: MostViewedServiceProtocol
+    let categoriesService: CategoriesServiceProtocol
     let searchService: SearchServiceProtocol
+    let imageLoader: ImageLoading
     
     init(user: User,
          authService: AuthServiceProtocol = AuthService(),
-         urlSession: URLSession = .shared) {
+         recentService: RecentServiceProtocol = URLSession.shared,
+         newService: NewServiceProtocol = URLSession.shared,
+         mostViewedService: MostViewedServiceProtocol = URLSession.shared,
+         categoriesService: CategoriesServiceProtocol = URLSession.shared,
+         searchService: SearchServiceProtocol = SearchService(urlSession: URLSession.shared),
+         imageLoader: ImageLoading = URLSession.shared) {
         self.user = user
         self.authService = authService
-        self.urlSession = urlSession
-        searchService = SearchService(urlSession: urlSession)
-    }
-
-    var recentService: RecentServiceProtocol {
-        return urlSession
-    }
-
-    var mostViewedService: MostViewedServiceProtocol {
-        return urlSession
-    }
-
-    var categoriesService: CategoriesServiceProtocol {
-        return urlSession
-    }
-
-    var imageLoader: ImageLoading {
-        return urlSession
+        self.recentService = recentService
+        self.newService = newService
+        self.mostViewedService = mostViewedService
+        self.categoriesService = categoriesService
+        self.searchService = searchService
+        self.imageLoader = imageLoader
     }
     
     func makeTabBarController() -> UITabBarController {
         let tabBarController = UITabBarController(nibName: nil, bundle: nil)
         
-        let newVC = RecentViewController(factory: self)
-        newVC.tabBarItem = UITabBarItem(title: "Recent", image: UIImage(named: "recent"), tag: 0)
+        let recentVC = RecentViewController(factory: self)
+        recentVC.tabBarItem = UITabBarItem(title: "Recent", image: UIImage(named: "recent"), tag: 0)
+
+        let newVC = NewViewController(factory: self)
+        newVC.tabBarItem = UITabBarItem(title: "New", image: UIImage(named: "new"), tag: 1)
         
         let popularVC = MostViewedViewController(factory: self)
-        popularVC.tabBarItem = UITabBarItem(title: "Most Viewed", image: UIImage(named: "most-viewed"), tag: 1)
+        popularVC.tabBarItem = UITabBarItem(title: "Most Viewed", image: UIImage(named: "most-viewed"), tag: 2)
         
         let categoriesVC = CategoriesViewController(factory: self)
-        categoriesVC.tabBarItem = UITabBarItem(title: "Categories", image: UIImage(named: "categories"), tag: 2)
+        categoriesVC.tabBarItem = UITabBarItem(title: "Categories", image: UIImage(named: "categories"), tag: 3)
         
         let searchVC = SearchViewController(factory: self)
         searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 3)
         
-        tabBarController.viewControllers = [newVC, popularVC, categoriesVC, searchVC].map { vc in
+        tabBarController.viewControllers = [recentVC, newVC, popularVC, categoriesVC, searchVC].map { vc in
             let navController = UINavigationController(rootViewController: vc)
             vc.view.backgroundColor = .white
             vc.navigationController?.navigationBar.barTintColor = .white
             return navController
         }
-        
-        popularVC.navigationController?.navigationBar.prefersLargeTitles = true
-        categoriesVC.navigationController?.navigationBar.prefersLargeTitles = true
-        searchVC.navigationController?.navigationBar.prefersLargeTitles = true
         
         return tabBarController
     }

@@ -15,7 +15,7 @@ class AppDetailHeaderCell: UITableViewCell {
         
         selectionStyle = .none
         
-        appIconImageView.layer.cornerRadius = 15
+        appIconImageView.layer.cornerRadius = 25
         appIconImageView.clipsToBounds = true
         appNameLabel.font = UIFont.boldSystemFont(ofSize: 22)
         priceButton.layer.cornerRadius = 15
