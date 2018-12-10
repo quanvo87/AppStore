@@ -1,6 +1,6 @@
 import UIKit
 
-class HomeViewController: UIViewController {
+class RecentViewController: UIViewController {
     private let tableView = UITableView()
     private let factory: Factory
     
@@ -24,7 +24,7 @@ class HomeViewController: UIViewController {
         view.addSubview(tableView)
 
         let logoutButton = UIBarButtonItem(
-            image: UIImage(named: "user"),
+            image: UIImage(named: "user")?.withRenderingMode(.alwaysOriginal),
             style: .plain,
             target: self,
             action: #selector(logout)
@@ -35,7 +35,7 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        factory.homeService.getAppsBySearchDate(offset: 0) { [weak self] result in
+        factory.recentService.getAppsBySearchDate(offset: 0) { [weak self] result in
             switch result {
             case .failure(let error):
                 self?.showAlert(title: "Error Getting Apps By Search Date", message: error.localizedDescription)
@@ -62,7 +62,7 @@ class HomeViewController: UIViewController {
     }
 }
 
-extension HomeViewController: UITableViewDataSource {
+extension RecentViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return apps.count
     }
@@ -75,7 +75,7 @@ extension HomeViewController: UITableViewDataSource {
     }
 }
 
-extension HomeViewController: UITableViewDelegate {
+extension RecentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300
     }

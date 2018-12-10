@@ -1,6 +1,6 @@
 import UIKit
 
-class PopularViewController: UIViewController {
+class MostViewedViewController: UIViewController {
     private let tableView = UITableView()
     private let factory: Factory
     
@@ -9,7 +9,7 @@ class PopularViewController: UIViewController {
         
         super.init(nibName: nil, bundle: nil)
         
-        navigationItem.title = "Most Popular"
+        navigationItem.title = "Most Viewed Apps"
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -22,23 +22,27 @@ class PopularViewController: UIViewController {
         )
         
         view.addSubview(tableView)
-        
-        factory.popularService.getPopularApps { [weak self] result in
-            switch result {
-            case .failure(let error):
-                self?.showAlert(title: "Error Getting Popular Apps", message: error.localizedDescription)
-            case .success(let apps):
-                self?.apps = apps
-            }
-        }
-        
+
         let logoutButton = UIBarButtonItem(
-            image: UIImage(named: "user"),
+            image: UIImage(named: "user")?.withRenderingMode(.alwaysOriginal),
             style: .plain,
             target: self,
             action: #selector(logout)
         )
         navigationItem.rightBarButtonItem = logoutButton
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        factory.mostViewedService.getMostViewedApps { [weak self] result in
+            switch result {
+            case .failure(let error):
+                self?.showAlert(title: "Error Getting Most Viewed Apps", message: error.localizedDescription)
+            case .success(let apps):
+                self?.apps = apps
+            }
+        }
     }
     
     private var apps = [App]() {
@@ -58,7 +62,7 @@ class PopularViewController: UIViewController {
     }
 }
 
-extension PopularViewController: UITableViewDataSource {
+extension MostViewedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return apps.count
     }
@@ -71,7 +75,7 @@ extension PopularViewController: UITableViewDataSource {
     }
 }
 
-extension PopularViewController: UITableViewDelegate {
+extension MostViewedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300
     }

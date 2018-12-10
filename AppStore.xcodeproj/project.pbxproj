@@ -39,8 +39,8 @@
 		5983584421B76E0500362AC5 /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983584321B76E0500362AC5 /* Extension+UIViewController.swift */; };
 		5983584621B76F8200362AC5 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983584521B76F8200362AC5 /* AuthService.swift */; };
 		59B0C52F21B74625004495F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0C52E21B74625004495F6 /* AppDelegate.swift */; };
-		59B0C53121B74625004495F6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0C53021B74625004495F6 /* HomeViewController.swift */; };
-		59B0C53321B74625004495F6 /* PopularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0C53221B74625004495F6 /* PopularViewController.swift */; };
+		59B0C53121B74625004495F6 /* RecentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0C53021B74625004495F6 /* RecentViewController.swift */; };
+		59B0C53321B74625004495F6 /* MostViewedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0C53221B74625004495F6 /* MostViewedViewController.swift */; };
 		59B0C53621B74625004495F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59B0C53421B74625004495F6 /* Main.storyboard */; };
 		59B0C53821B74626004495F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59B0C53721B74626004495F6 /* Assets.xcassets */; };
 		59B0C53B21B74626004495F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59B0C53921B74626004495F6 /* LaunchScreen.storyboard */; };
@@ -48,7 +48,7 @@
 		59B0C55121B74626004495F6 /* AppStoreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0C55021B74626004495F6 /* AppStoreUITests.swift */; };
 		59B0C56021B74C24004495F6 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0C55F21B74C24004495F6 /* CategoriesViewController.swift */; };
 		59B0C56221B74C37004495F6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0C56121B74C37004495F6 /* SearchViewController.swift */; };
-		59B0C56521B74D1E004495F6 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0C56421B74D1E004495F6 /* HomeService.swift */; };
+		59B0C56521B74D1E004495F6 /* RecentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0C56421B74D1E004495F6 /* RecentService.swift */; };
 		59B0C56821B74DB0004495F6 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0C56721B74DB0004495F6 /* Factory.swift */; };
 		59B0C56E21B7563D004495F6 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0C56D21B7563D004495F6 /* App.swift */; };
 		59B0C57021B75D29004495F6 /* Extension+UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0C56F21B75D29004495F6 /* Extension+UIStoryboard.swift */; };
@@ -61,7 +61,7 @@
 		59F5EA8F21B9B98D0034B18E /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F5EA8E21B9B98D0034B18E /* Extension+UIColor.swift */; };
 		59F5EA9121B9BC550034B18E /* AppDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F5EA9021B9BC550034B18E /* AppDetailViewController.swift */; };
 		59F8819C21BA6FB200F21F1E /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F8819B21BA6FB200F21F1E /* Extension+String.swift */; };
-		59F8819E21BA74D500F21F1E /* PopularService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F8819D21BA74D500F21F1E /* PopularService.swift */; };
+		59F8819E21BA74D500F21F1E /* MostViewedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F8819D21BA74D500F21F1E /* MostViewedService.swift */; };
 		59F881A021BAD2EC00F21F1E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F8819F21BAD2EC00F21F1E /* User.swift */; };
 		5D2E8860B4C00CEF2387A4A6 /* Pods_AppStoreUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551D5AC0B0C3502E7FFC4292 /* Pods_AppStoreUITests.framework */; };
 		D8B40516287466933123DD2A /* Pods_AppStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6902F7698DF320599278FB63 /* Pods_AppStore.framework */; };
@@ -124,8 +124,8 @@
 		5983584521B76F8200362AC5 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		59B0C52B21B74625004495F6 /* AppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59B0C52E21B74625004495F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		59B0C53021B74625004495F6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		59B0C53221B74625004495F6 /* PopularViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewController.swift; sourceTree = "<group>"; };
+		59B0C53021B74625004495F6 /* RecentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentViewController.swift; sourceTree = "<group>"; };
+		59B0C53221B74625004495F6 /* MostViewedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostViewedViewController.swift; sourceTree = "<group>"; };
 		59B0C53521B74625004495F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		59B0C53721B74626004495F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		59B0C53A21B74626004495F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -138,7 +138,7 @@
 		59B0C55221B74626004495F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59B0C55F21B74C24004495F6 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		59B0C56121B74C37004495F6 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		59B0C56421B74D1E004495F6 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
+		59B0C56421B74D1E004495F6 /* RecentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentService.swift; sourceTree = "<group>"; };
 		59B0C56721B74DB0004495F6 /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 		59B0C56D21B7563D004495F6 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		59B0C56F21B75D29004495F6 /* Extension+UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIStoryboard.swift"; sourceTree = "<group>"; };
@@ -151,7 +151,7 @@
 		59F5EA8E21B9B98D0034B18E /* Extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		59F5EA9021B9BC550034B18E /* AppDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailViewController.swift; sourceTree = "<group>"; };
 		59F8819B21BA6FB200F21F1E /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
-		59F8819D21BA74D500F21F1E /* PopularService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularService.swift; sourceTree = "<group>"; };
+		59F8819D21BA74D500F21F1E /* MostViewedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostViewedService.swift; sourceTree = "<group>"; };
 		59F8819F21BAD2EC00F21F1E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6902F7698DF320599278FB63 /* Pods_AppStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		72132A3DD7A1ABDD51C12875 /* Pods-AppStoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppStoreTests/Pods-AppStoreTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -331,8 +331,8 @@
 			isa = PBXGroup;
 			children = (
 				5983584121B76C7E00362AC5 /* LoginViewController.swift */,
-				59B0C53021B74625004495F6 /* HomeViewController.swift */,
-				59B0C53221B74625004495F6 /* PopularViewController.swift */,
+				59B0C53021B74625004495F6 /* RecentViewController.swift */,
+				59B0C53221B74625004495F6 /* MostViewedViewController.swift */,
 				59B0C55F21B74C24004495F6 /* CategoriesViewController.swift */,
 				5956318A21B936D30010B2BE /* CategoryViewController.swift */,
 				59F5EA9021B9BC550034B18E /* AppDetailViewController.swift */,
@@ -345,8 +345,8 @@
 		59B0C56321B74CE9004495F6 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				59B0C56421B74D1E004495F6 /* HomeService.swift */,
-				59F8819D21BA74D500F21F1E /* PopularService.swift */,
+				59B0C56421B74D1E004495F6 /* RecentService.swift */,
+				59F8819D21BA74D500F21F1E /* MostViewedService.swift */,
 				5916D07521B7A7D800FD98DA /* SearchService.swift */,
 				5956318821B932060010B2BE /* CategoriesService.swift */,
 				592A6C2B21B8B51600AC2865 /* ImageLoading.swift */,
@@ -623,7 +623,7 @@
 				5956318921B932060010B2BE /* CategoriesService.swift in Sources */,
 				595BF0B021B8549D00965F1E /* CustomError.swift in Sources */,
 				592A6C2E21B8B5EF00AC2865 /* Constant.swift in Sources */,
-				59B0C53321B74625004495F6 /* PopularViewController.swift in Sources */,
+				59B0C53321B74625004495F6 /* MostViewedViewController.swift in Sources */,
 				5903C15C21BA051E0012DDFA /* AppDetailScreenshotCell.swift in Sources */,
 				592A6C3721B8DF0300AC2865 /* SearchResultsVC+TableViewDelegate.swift in Sources */,
 				5952A1B221BA003300DA4394 /* AppDetailScreenshotsCell.swift in Sources */,
@@ -631,7 +631,7 @@
 				595BF0B921B8785A00965F1E /* SearchResultsVC+SearchBarDelegate.swift in Sources */,
 				595BF0B221B86C3D00965F1E /* SearchResultsViewController.swift in Sources */,
 				59F5EA9121B9BC550034B18E /* AppDetailViewController.swift in Sources */,
-				59F8819E21BA74D500F21F1E /* PopularService.swift in Sources */,
+				59F8819E21BA74D500F21F1E /* MostViewedService.swift in Sources */,
 				595BC75821BA5EC500A9CE80 /* AppDetailVersionCell.swift in Sources */,
 				59146BE421B9F78A00F2744C /* AppDetailRatingsCell.swift in Sources */,
 				5916D07921B7AE4700FD98DA /* Result.swift in Sources */,
@@ -645,9 +645,9 @@
 				59D0E52E21BA686F0023B55D /* AppDetailInfoCell.swift in Sources */,
 				5983584021B76A2700362AC5 /* AuthListening.swift in Sources */,
 				5916D07621B7A7D800FD98DA /* SearchService.swift in Sources */,
-				59B0C56521B74D1E004495F6 /* HomeService.swift in Sources */,
+				59B0C56521B74D1E004495F6 /* RecentService.swift in Sources */,
 				5956318B21B936D30010B2BE /* CategoryViewController.swift in Sources */,
-				59B0C53121B74625004495F6 /* HomeViewController.swift in Sources */,
+				59B0C53121B74625004495F6 /* RecentViewController.swift in Sources */,
 				595BF0BD21B89C3A00965F1E /* SearchVC+TableViewDelegate.swift in Sources */,
 				592A6C3921B8E0A900AC2865 /* SearchResultsVC+SearchVCDelegate.swift in Sources */,
 				595BF0C221B8AD0F00965F1E /* LargeSearchCell.swift in Sources */,

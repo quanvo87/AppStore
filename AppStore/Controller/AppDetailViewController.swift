@@ -46,7 +46,7 @@ class AppDetailViewController: UIViewController {
 
         view.addSubview(tableView)
 
-        factory.popularService.incrementAppViewCount(trackId: app.trackId) { [weak self] result in
+        factory.mostViewedService.incrementAppViewCount(trackId: app.trackId) { [weak self] result in
             switch result {
             case .failure(let error):
                 print(error)

@@ -1,11 +1,11 @@
 import Foundation
 
-protocol PopularServiceProtocol {
+protocol MostViewedServiceProtocol {
     func incrementAppViewCount(trackId: Int, completion: @escaping (Result<Int>) -> Void)
-    func getPopularApps(completion: @escaping (Result<[App]>) -> Void)
+    func getMostViewedApps(completion: @escaping (Result<[App]>) -> Void)
 }
 
-extension URLSession: PopularServiceProtocol {
+extension URLSession: MostViewedServiceProtocol {
     func incrementAppViewCount(trackId: Int, completion: @escaping (Result<Int>) -> Void) {
         guard let url = getIncrementAppViewCountUrl(trackId: trackId) else {
             completion(.failure(CustomError.invalidUrl))
@@ -33,8 +33,8 @@ extension URLSession: PopularServiceProtocol {
             }.resume()
     }
 
-    func getPopularApps(completion: @escaping (Result<[App]>) -> Void) {
-        guard let url = popularAppsUrl else {
+    func getMostViewedApps(completion: @escaping (Result<[App]>) -> Void) {
+        guard let url = mostViewedAppsUrl else {
             completion(.failure(CustomError.invalidUrl))
             return
         }
@@ -64,9 +64,9 @@ extension URLSession: PopularServiceProtocol {
 }
 
 private extension URLSession {
-    var popularAppsUrl: URL? {
+    var mostViewedAppsUrl: URL? {
         var components = urlComponents
-        components.path = "/popularApps"
+        components.path = "/mostViewedApps"
         return components.url
     }
 

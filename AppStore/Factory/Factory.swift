@@ -15,11 +15,11 @@ class Factory {
         searchService = SearchService(urlSession: urlSession)
     }
 
-    var homeService: HomeServiceProtocol {
+    var recentService: RecentServiceProtocol {
         return urlSession
     }
 
-    var popularService: PopularServiceProtocol {
+    var mostViewedService: MostViewedServiceProtocol {
         return urlSession
     }
 
@@ -34,11 +34,11 @@ class Factory {
     func makeTabBarController() -> UITabBarController {
         let tabBarController = UITabBarController(nibName: nil, bundle: nil)
         
-        let newVC = HomeViewController(factory: self)
-        newVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "home"), tag: 0)
+        let newVC = RecentViewController(factory: self)
+        newVC.tabBarItem = UITabBarItem(title: "Recent", image: UIImage(named: "recent"), tag: 0)
         
-        let popularVC = PopularViewController(factory: self)
-        popularVC.tabBarItem = UITabBarItem(title: "Popular", image: UIImage(named: "popular"), tag: 1)
+        let popularVC = MostViewedViewController(factory: self)
+        popularVC.tabBarItem = UITabBarItem(title: "Most Viewed", image: UIImage(named: "most-viewed"), tag: 1)
         
         let categoriesVC = CategoriesViewController(factory: self)
         categoriesVC.tabBarItem = UITabBarItem(title: "Categories", image: UIImage(named: "categories"), tag: 2)

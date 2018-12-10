@@ -1,10 +1,10 @@
 import Foundation
 
-protocol HomeServiceProtocol {
+protocol RecentServiceProtocol {
     func getAppsBySearchDate(offset: Int, completion: @escaping (Result<[App]>) -> Void)
 }
 
-extension URLSession: HomeServiceProtocol {
+extension URLSession: RecentServiceProtocol {
     func getAppsBySearchDate(offset: Int, completion: @escaping (Result<[App]>) -> Void) {
         guard let url = appsBySearchDateUrl else {
             completion(.failure(CustomError.invalidUrl))
