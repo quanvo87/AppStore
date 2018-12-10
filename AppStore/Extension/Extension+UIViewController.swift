@@ -11,13 +11,4 @@ extension UIViewController {
         }
         present(alert, animated: true, completion: nil)
     }
-
-    func setupNavigationBar() {
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.barTintColor = .white
-    }
-
-    func hideNavigationBarBorder() {
-        navigationController?.navigationBar.shadowImage = UIImage()
-    }
 }

@@ -3,13 +3,11 @@ import UIKit
 class AppDetailViewController: UIViewController {
     private let tableView = UITableView()
     private let factory: Factory
-    private let imageLoader: ImageLoading
     private var app: App
 
     init(app: App, factory: Factory) {
         self.app = app
         self.factory = factory
-        imageLoader = factory.imageLoader
 
         super.init(nibName: nil, bundle: nil)
 

@@ -3,32 +3,27 @@ const db = require('../index').db
 
 const querySize = 20
 
-exports.saveSearchHistory = (uid, query) =>
-  db
-    .collection('user')
-    .doc(uid)
-    .collection('searchHistory')
-    .add({
-      query: query,
-      date: admin.firestore.FieldValue.serverTimestamp()
-    })
+exports.saveSearch = query =>
+  db.collection('search').add({
+    query: query,
+    date: admin.firestore.FieldValue.serverTimestamp()
+  })
 
 exports.saveApps = apps => {
   const batch = db.batch()
-  apps.forEach(app =>
+  apps.forEach(app => {
+    app['searchDate'] = admin.firestore.FieldValue.serverTimestamp()
     batch.set(db.collection('app').doc(app['trackId'].toString()), app, {
       merge: true
     })
-  )
+  })
   return batch.commit()
 }
 
-exports.getRecentSearches = uid =>
+exports.getRecentSearches = () =>
   new Promise((resolve, reject) =>
     db
-      .collection('user')
-      .doc(uid)
-      .collection('searchHistory')
+      .collection('search')
       .orderBy('date', 'desc')
       .get()
       .then(snapshot => {
@@ -39,17 +34,17 @@ exports.getRecentSearches = uid =>
       .catch(error => reject(error))
   )
 
-exports.getNewestApps = () =>
+exports.getAppsBySearchDate = () =>
   new Promise((resolve, reject) =>
     db
       .collection('app')
-      .orderBy('currentVersionReleaseDate', 'desc')
+      .orderBy('searchDate', 'desc')
       .limit(querySize)
       .get()
       .then(snapshot => {
-        const newestApps = []
-        snapshot.forEach(doc => newestApps.push(doc.data()))
-        return resolve(newestApps)
+        const apps = []
+        snapshot.forEach(doc => apps.push(doc.data()))
+        return resolve(apps)
       })
       .catch(error => reject(error))
   )
@@ -59,6 +54,7 @@ exports.getAppsForGenre = genre =>
     db
       .collection('app')
       .where('primaryGenreName', '==', genre)
+      .orderBy('searchDate', 'desc')
       .limit(querySize)
       .get()
       .then(snapshot => {
@@ -86,7 +82,7 @@ exports.incrementAppViewCount = trackId => {
   )
 }
 
-exports.getPopularApps = () =>
+exports.getMostViewedApps = () =>
   new Promise((resolve, rejcet) => {
     db.collection('app')
       .orderBy('viewCount', 'desc')

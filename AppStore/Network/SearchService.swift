@@ -7,13 +7,11 @@ protocol SearchServiceProtocol {
 
 class SearchService: SearchServiceProtocol {
     private let urlSession: URLSession
-    private let uid: String
 
     private var pendingWorkItem: DispatchWorkItem?
 
-    init(urlSession: URLSession, uid: String) {
+    init(urlSession: URLSession) {
         self.urlSession = urlSession
-        self.uid = uid
     }
 
     func search(query: String, saveSearch: Bool, completion: @escaping (Result<[App]>) -> Void) {
@@ -88,7 +86,6 @@ private extension SearchService {
         var components = urlComponents
         components.path = "/search"
         components.queryItems = [
-            URLQueryItem(name: "uid", value: uid),
             URLQueryItem(name: "query", value: query),
             URLQueryItem(name: "saveSearch", value: saveSearch ? "true" : "false")
         ]
@@ -98,7 +95,6 @@ private extension SearchService {
     var recentSearchesUrl: URL? {
         var components = urlComponents
         components.path = "/recentSearches"
-        components.queryItems = [URLQueryItem(name: "uid", value: uid)]
         return components.url
     }
 }

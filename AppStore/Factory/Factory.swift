@@ -12,10 +12,10 @@ class Factory {
         self.user = user
         self.authService = authService
         self.urlSession = urlSession
-        searchService = SearchService(urlSession: urlSession, uid: user.uid)
+        searchService = SearchService(urlSession: urlSession)
     }
 
-    var newService: NewServiceProtocol {
+    var homeService: HomeServiceProtocol {
         return urlSession
     }
 
@@ -34,8 +34,8 @@ class Factory {
     func makeTabBarController() -> UITabBarController {
         let tabBarController = UITabBarController(nibName: nil, bundle: nil)
         
-        let newVC = NewViewController(factory: self)
-        newVC.tabBarItem = UITabBarItem(title: "New", image: UIImage(named: "new"), tag: 0)
+        let newVC = HomeViewController(factory: self)
+        newVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "home"), tag: 0)
         
         let popularVC = PopularViewController(factory: self)
         popularVC.tabBarItem = UITabBarItem(title: "Popular", image: UIImage(named: "popular"), tag: 1)
@@ -48,13 +48,14 @@ class Factory {
         
         tabBarController.viewControllers = [newVC, popularVC, categoriesVC, searchVC].map { vc in
             let navController = UINavigationController(rootViewController: vc)
-            vc.setupNavigationBar()
             vc.view.backgroundColor = .white
+            vc.navigationController?.navigationBar.barTintColor = .white
             return navController
         }
         
-        newVC.hideNavigationBarBorder()
-        searchVC.hideNavigationBarBorder()
+        popularVC.navigationController?.navigationBar.prefersLargeTitles = true
+        categoriesVC.navigationController?.navigationBar.prefersLargeTitles = true
+        searchVC.navigationController?.navigationBar.prefersLargeTitles = true
         
         return tabBarController
     }

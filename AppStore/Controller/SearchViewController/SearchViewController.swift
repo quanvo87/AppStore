@@ -47,7 +47,14 @@ class SearchViewController: UIViewController {
             navigationItem.hidesSearchBarWhenScrolling = true
         }
 
-        getRecentSearches()
+        factory.searchService.getRecentSearches { [weak self] result in
+            switch result {
+            case .failure(let error):
+                self?.showAlert(title: "Error Getting Recent Searches", message: error.localizedDescription)
+            case .success(let recentSearches):
+                self?.recentSearches = recentSearches
+            }
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -57,17 +64,6 @@ class SearchViewController: UIViewController {
     var recentSearches = [String]() {
         didSet {
             tableView.reloadData()
-        }
-    }
-
-    func getRecentSearches() {
-        factory.searchService.getRecentSearches { [weak self] result in
-            switch result {
-            case .failure(let error):
-                self?.showAlert(title: "Error Getting Recent Searches", message: error.localizedDescription)
-            case .success(let recentSearches):
-                self?.recentSearches = recentSearches
-            }
         }
     }
 }

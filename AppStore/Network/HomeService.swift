@@ -1,12 +1,12 @@
 import Foundation
 
-protocol NewServiceProtocol {
-    func getNewestApps(offset: Int, completion: @escaping (Result<[App]>) -> Void)
+protocol HomeServiceProtocol {
+    func getAppsBySearchDate(offset: Int, completion: @escaping (Result<[App]>) -> Void)
 }
 
-extension URLSession: NewServiceProtocol {
-    func getNewestApps(offset: Int, completion: @escaping (Result<[App]>) -> Void) {
-        guard let url = newestAppsUrl else {
+extension URLSession: HomeServiceProtocol {
+    func getAppsBySearchDate(offset: Int, completion: @escaping (Result<[App]>) -> Void) {
+        guard let url = appsBySearchDateUrl else {
             completion(.failure(CustomError.invalidUrl))
             return
         }
@@ -36,9 +36,9 @@ extension URLSession: NewServiceProtocol {
 }
 
 private extension URLSession {
-    var newestAppsUrl: URL? {
+    var appsBySearchDateUrl: URL? {
         var components = urlComponents
-        components.path = "/newestApps"
+        components.path = "/appsBySearchDate"
         return components.url
     }
 }

@@ -34,13 +34,12 @@
 		595BF0C021B89EC400965F1E /* LargeAppCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 595BF0BF21B89EC400965F1E /* LargeAppCell.xib */; };
 		595BF0C221B8AD0F00965F1E /* LargeSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595BF0C121B8AD0F00965F1E /* LargeSearchCell.swift */; };
 		5983583C21B765CE00362AC5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5983583B21B765CE00362AC5 /* GoogleService-Info.plist */; };
-		5983583E21B768DE00362AC5 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983583D21B768DE00362AC5 /* EntryViewController.swift */; };
 		5983584021B76A2700362AC5 /* AuthListening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983583F21B76A2700362AC5 /* AuthListening.swift */; };
 		5983584221B76C7E00362AC5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983584121B76C7E00362AC5 /* LoginViewController.swift */; };
 		5983584421B76E0500362AC5 /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983584321B76E0500362AC5 /* Extension+UIViewController.swift */; };
 		5983584621B76F8200362AC5 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983584521B76F8200362AC5 /* AuthService.swift */; };
 		59B0C52F21B74625004495F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0C52E21B74625004495F6 /* AppDelegate.swift */; };
-		59B0C53121B74625004495F6 /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0C53021B74625004495F6 /* NewViewController.swift */; };
+		59B0C53121B74625004495F6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0C53021B74625004495F6 /* HomeViewController.swift */; };
 		59B0C53321B74625004495F6 /* PopularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0C53221B74625004495F6 /* PopularViewController.swift */; };
 		59B0C53621B74625004495F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59B0C53421B74625004495F6 /* Main.storyboard */; };
 		59B0C53821B74626004495F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59B0C53721B74626004495F6 /* Assets.xcassets */; };
@@ -49,7 +48,7 @@
 		59B0C55121B74626004495F6 /* AppStoreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0C55021B74626004495F6 /* AppStoreUITests.swift */; };
 		59B0C56021B74C24004495F6 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0C55F21B74C24004495F6 /* CategoriesViewController.swift */; };
 		59B0C56221B74C37004495F6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0C56121B74C37004495F6 /* SearchViewController.swift */; };
-		59B0C56521B74D1E004495F6 /* NewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0C56421B74D1E004495F6 /* NewService.swift */; };
+		59B0C56521B74D1E004495F6 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0C56421B74D1E004495F6 /* HomeService.swift */; };
 		59B0C56821B74DB0004495F6 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0C56721B74DB0004495F6 /* Factory.swift */; };
 		59B0C56E21B7563D004495F6 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0C56D21B7563D004495F6 /* App.swift */; };
 		59B0C57021B75D29004495F6 /* Extension+UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0C56F21B75D29004495F6 /* Extension+UIStoryboard.swift */; };
@@ -119,14 +118,13 @@
 		595BF0BF21B89EC400965F1E /* LargeAppCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LargeAppCell.xib; sourceTree = "<group>"; };
 		595BF0C121B8AD0F00965F1E /* LargeSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeSearchCell.swift; sourceTree = "<group>"; };
 		5983583B21B765CE00362AC5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		5983583D21B768DE00362AC5 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		5983583F21B76A2700362AC5 /* AuthListening.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthListening.swift; sourceTree = "<group>"; };
 		5983584121B76C7E00362AC5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5983584321B76E0500362AC5 /* Extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
 		5983584521B76F8200362AC5 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		59B0C52B21B74625004495F6 /* AppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59B0C52E21B74625004495F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		59B0C53021B74625004495F6 /* NewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewViewController.swift; sourceTree = "<group>"; };
+		59B0C53021B74625004495F6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		59B0C53221B74625004495F6 /* PopularViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewController.swift; sourceTree = "<group>"; };
 		59B0C53521B74625004495F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		59B0C53721B74626004495F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -140,7 +138,7 @@
 		59B0C55221B74626004495F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59B0C55F21B74C24004495F6 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		59B0C56121B74C37004495F6 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		59B0C56421B74D1E004495F6 /* NewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewService.swift; sourceTree = "<group>"; };
+		59B0C56421B74D1E004495F6 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		59B0C56721B74DB0004495F6 /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 		59B0C56D21B7563D004495F6 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		59B0C56F21B75D29004495F6 /* Extension+UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIStoryboard.swift"; sourceTree = "<group>"; };
@@ -332,9 +330,8 @@
 		59B0C55E21B74BD8004495F6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5983583D21B768DE00362AC5 /* EntryViewController.swift */,
 				5983584121B76C7E00362AC5 /* LoginViewController.swift */,
-				59B0C53021B74625004495F6 /* NewViewController.swift */,
+				59B0C53021B74625004495F6 /* HomeViewController.swift */,
 				59B0C53221B74625004495F6 /* PopularViewController.swift */,
 				59B0C55F21B74C24004495F6 /* CategoriesViewController.swift */,
 				5956318A21B936D30010B2BE /* CategoryViewController.swift */,
@@ -348,7 +345,7 @@
 		59B0C56321B74CE9004495F6 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				59B0C56421B74D1E004495F6 /* NewService.swift */,
+				59B0C56421B74D1E004495F6 /* HomeService.swift */,
 				59F8819D21BA74D500F21F1E /* PopularService.swift */,
 				5916D07521B7A7D800FD98DA /* SearchService.swift */,
 				5956318821B932060010B2BE /* CategoriesService.swift */,
@@ -621,7 +618,6 @@
 				5983584221B76C7E00362AC5 /* LoginViewController.swift in Sources */,
 				59D7A5CC21BA52B500161FAF /* AppDetailDescriptionCell.swift in Sources */,
 				59B0C57021B75D29004495F6 /* Extension+UIStoryboard.swift in Sources */,
-				5983583E21B768DE00362AC5 /* EntryViewController.swift in Sources */,
 				59B0C56821B74DB0004495F6 /* Factory.swift in Sources */,
 				59B0C56221B74C37004495F6 /* SearchViewController.swift in Sources */,
 				5956318921B932060010B2BE /* CategoriesService.swift in Sources */,
@@ -649,9 +645,9 @@
 				59D0E52E21BA686F0023B55D /* AppDetailInfoCell.swift in Sources */,
 				5983584021B76A2700362AC5 /* AuthListening.swift in Sources */,
 				5916D07621B7A7D800FD98DA /* SearchService.swift in Sources */,
-				59B0C56521B74D1E004495F6 /* NewService.swift in Sources */,
+				59B0C56521B74D1E004495F6 /* HomeService.swift in Sources */,
 				5956318B21B936D30010B2BE /* CategoryViewController.swift in Sources */,
-				59B0C53121B74625004495F6 /* NewViewController.swift in Sources */,
+				59B0C53121B74625004495F6 /* HomeViewController.swift in Sources */,
 				595BF0BD21B89C3A00965F1E /* SearchVC+TableViewDelegate.swift in Sources */,
 				592A6C3921B8E0A900AC2865 /* SearchResultsVC+SearchVCDelegate.swift in Sources */,
 				595BF0C221B8AD0F00965F1E /* LargeSearchCell.swift in Sources */,

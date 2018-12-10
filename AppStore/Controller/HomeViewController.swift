@@ -1,17 +1,15 @@
 import UIKit
 
-class NewViewController: UIViewController {
+class HomeViewController: UIViewController {
     private let tableView = UITableView()
     private let factory: Factory
-    private let imageLoader: ImageLoading
     
     init(factory: Factory) {
         self.factory = factory
-        imageLoader = factory.imageLoader
         
         super.init(nibName: nil, bundle: nil)
         
-        navigationItem.title = "Newest Apps"
+        navigationItem.title = "Recently Searched Apps"
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -25,15 +23,6 @@ class NewViewController: UIViewController {
         
         view.addSubview(tableView)
 
-        factory.newService.getNewestApps(offset: 0) { [weak self] result in
-            switch result {
-            case .failure(let error):
-                self?.showAlert(title: "Error Getting Newest Apps", message: error.localizedDescription)
-            case .success(let apps):
-                self?.apps = apps
-            }
-        }
-
         let logoutButton = UIBarButtonItem(
             image: UIImage(named: "user"),
             style: .plain,
@@ -41,6 +30,19 @@ class NewViewController: UIViewController {
             action: #selector(logout)
         )
         navigationItem.rightBarButtonItem = logoutButton
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        factory.homeService.getAppsBySearchDate(offset: 0) { [weak self] result in
+            switch result {
+            case .failure(let error):
+                self?.showAlert(title: "Error Getting Apps By Search Date", message: error.localizedDescription)
+            case .success(let apps):
+                self?.apps = apps
+            }
+        }
     }
     
     var apps = [App]() {
@@ -60,7 +62,7 @@ class NewViewController: UIViewController {
     }
 }
 
-extension NewViewController: UITableViewDataSource {
+extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return apps.count
     }
@@ -73,13 +75,14 @@ extension NewViewController: UITableViewDataSource {
     }
 }
 
-extension NewViewController: UITableViewDelegate {
+extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+
         let app = apps[indexPath.row]
         let vc = factory.makeAppDetailViewController(app: app)
         navigationController?.pushViewController(vc, animated: true)

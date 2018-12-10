@@ -15,10 +15,9 @@ const searchUrl =
   '&term='
 
 exports.search = functions.https.onRequest((req, res) => {
-  const uid = req.query.uid
   const query = req.query.query
   const saveSearch = req.query.saveSearch
-  if (saveSearch === 'true') dbUtil.saveSearchHistory(uid, query)
+  if (saveSearch === 'true') dbUtil.saveSearch(query)
   const url = searchUrl + query
   return axios
     .get(url)
@@ -30,7 +29,7 @@ exports.search = functions.https.onRequest((req, res) => {
 })
 
 exports.onSearch = functions.firestore
-  .document('user/{uid}/searchHistory/{docId}')
+  .document('search/{docId}')
   .onCreate(snap => {
     const query = snap.data().query
     const url = searchUrl + query
@@ -43,21 +42,20 @@ exports.onSearch = functions.firestore
       })
   })
 
-exports.recentSearches = functions.https.onRequest((req, res) => {
-  const uid = req.query.uid
-  return dbUtil
-    .getRecentSearches(uid)
+exports.recentSearches = functions.https.onRequest((_, res) =>
+  dbUtil
+    .getRecentSearches()
     .then(recentSearches => res.send(recentSearches))
     .catch(error => {
       console.log(error)
       return res.status(400).end()
     })
-})
+)
 
-exports.newestApps = functions.https.onRequest((_, res) =>
+exports.appsBySearchDate = functions.https.onRequest((_, res) =>
   dbUtil
-    .getNewestApps()
-    .then(newestApps => res.send(newestApps))
+    .getAppsBySearchDate()
+    .then(apps => res.send(apps))
     .catch(error => {
       console.log(error)
       return res.status(400).end()
@@ -90,9 +88,9 @@ exports.incrementAppViewCount = functions.https.onRequest((req, res) => {
     })
 })
 
-exports.popularApps = functions.https.onRequest((_, res) =>
+exports.mostViewedApps = functions.https.onRequest((_, res) =>
   dbUtil
-    .getPopularApps()
+    .getMostViewedApps()
     .then(apps => res.send(apps))
     .catch(error => {
       console.log(error)

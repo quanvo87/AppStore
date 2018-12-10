@@ -70,6 +70,7 @@ extension CategoriesViewController: UITableViewDataSource {
 extension CategoriesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+
         let category = categories[indexPath.row]
         let vc = CategoryViewController(category: category, factory: factory)
         navigationController?.pushViewController(vc, animated: true)

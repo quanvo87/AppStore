@@ -7,6 +7,7 @@ extension SearchResultsViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+
         if isShowingSearchResults {
             let app = searchResults[indexPath.row]
             delegate?.controller(self, didSelectApp: app)
