@@ -2,6 +2,7 @@ import UIKit
 
 class CategoryViewController: UIViewController {
     private let tableView = UITableView()
+    private let refreshControl = UIRefreshControl()
     private let category: String
     private let factory: Factory
     
@@ -12,12 +13,15 @@ class CategoryViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         navigationItem.title = category + " By Search Date"
+
+        refreshControl.configure(target: self, action: #selector(getData))
         
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-        tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
+        tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        tableView.refreshControl = refreshControl
+        tableView.tableFooterView = UIView()
         tableView.register(
             UINib(nibName: LargeAppCell.reuseIdentifier, bundle: nil),
             forCellReuseIdentifier: LargeAppCell.reuseIdentifier
@@ -29,22 +33,28 @@ class CategoryViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = false
+        getData()
+    }
+    
+    private var apps = [App]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
 
+    @objc private func getData() {
         let ai = view.showActivityIndicator()
         factory.categoriesService.getAppsForCategory(category) { [weak self] result in
-            ai.removeFromSuperviewMainQueue()
+            DispatchQueue.main.async {
+                ai.removeFromSuperview()
+                self?.refreshControl.endRefreshing()
+            }
             switch result {
             case .failure(let error):
                 self?.showAlert(title: "Error Getting Apps", message: error.localizedDescription)
             case .success(let apps):
                 self?.apps = apps
             }
-        }
-    }
-    
-    private var apps = [App]() {
-        didSet {
-            tableView.reloadData()
         }
     }
     

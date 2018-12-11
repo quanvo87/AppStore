@@ -17,17 +17,6 @@ class CategoriesViewController: UIViewController {
         tableView.tableFooterView = UIView()
         
         view.addSubview(tableView)
-
-        let ai = view.showActivityIndicator()
-        factory.categoriesService.getCategories { [weak self] result in
-            ai.removeFromSuperviewMainQueue()
-            switch result {
-            case .failure(let error):
-                self?.showAlert(title: "Error Getting App Categories", message: error.localizedDescription)
-            case .success(let categories):
-                self?.categories = categories
-            }
-        }
         
         let deleteDatabaseButton = UIBarButtonItem(
             image: UIImage(named: "delete-db")?.withRenderingMode(.alwaysOriginal),
@@ -36,6 +25,19 @@ class CategoriesViewController: UIViewController {
             action: #selector(deleteDatabase)
         )
         navigationItem.rightBarButtonItem = deleteDatabaseButton
+        
+        let ai = view.showActivityIndicator()
+        factory.categoriesService.getCategories { [weak self] result in
+            DispatchQueue.main.async {
+                ai.removeFromSuperview()
+            }
+            switch result {
+            case .failure(let error):
+                self?.showAlert(title: "Error Getting App Categories", message: error.localizedDescription)
+            case .success(let categories):
+                self?.categories = categories
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,7 +58,9 @@ class CategoriesViewController: UIViewController {
             }
             let ai = self.view.showActivityIndicator()
             self.factory.deleteService.deleteDatabase() { error in
-                ai.removeFromSuperviewMainQueue()
+                DispatchQueue.main.async {
+                    ai.removeFromSuperview()
+                }
                 if let error = error {
                     self.showAlert(title: "Error Deleting Database", message: error.localizedDescription)
                 } else {
@@ -92,7 +96,7 @@ extension CategoriesViewController: UITableViewDelegate {
         let vc = CategoryViewController(category: category, factory: factory)
         navigationController?.pushViewController(vc, animated: true)
     }
-
+    
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         return categories.isEmpty ? "No app categories." : nil
     }

@@ -2,6 +2,7 @@ import UIKit
 
 class MostViewedViewController: UIViewController {
     private let tableView = UITableView()
+    private let refreshControl = UIRefreshControl()
     private let factory: Factory
     
     init(factory: Factory) {
@@ -11,18 +12,21 @@ class MostViewedViewController: UIViewController {
         
         navigationItem.title = "Most Viewed Apps"
         
+        refreshControl.configure(target: self, action: #selector(getData))
+        
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-        tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
+        tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        tableView.refreshControl = refreshControl
+        tableView.tableFooterView = UIView()
         tableView.register(
             UINib(nibName: LargeAppCell.reuseIdentifier, bundle: nil),
             forCellReuseIdentifier: LargeAppCell.reuseIdentifier
         )
         
         view.addSubview(tableView)
-
+        
         let deleteDatabaseButton = UIBarButtonItem(
             image: UIImage(named: "delete-db")?.withRenderingMode(.alwaysOriginal),
             style: .plain,
@@ -30,8 +34,10 @@ class MostViewedViewController: UIViewController {
             action: #selector(deleteDatabase)
         )
         navigationItem.rightBarButtonItem = deleteDatabaseButton
+        
+        getData()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = false
@@ -43,11 +49,14 @@ class MostViewedViewController: UIViewController {
             tableView.reloadData()
         }
     }
-
-    private func getData() {
+    
+    @objc private func getData() {
         let ai = view.showActivityIndicator()
         factory.mostViewedService.getMostViewedApps { [weak self] result in
-            ai.removeFromSuperviewMainQueue()
+            DispatchQueue.main.async {
+                ai.removeFromSuperview()
+                self?.refreshControl.endRefreshing()
+            }
             switch result {
             case .failure(let error):
                 self?.showAlert(title: "Error Getting Most Viewed Apps", message: error.localizedDescription)
@@ -56,7 +65,7 @@ class MostViewedViewController: UIViewController {
             }
         }
     }
-
+    
     @objc func deleteDatabase() {
         showAlert(title: "Delete Database?", message: nil) { [weak self] _ in
             guard let `self` = self else {
@@ -64,7 +73,9 @@ class MostViewedViewController: UIViewController {
             }
             let ai = self.view.showActivityIndicator()
             self.factory.deleteService.deleteDatabase() { error in
-                ai.removeFromSuperviewMainQueue()
+                DispatchQueue.main.async {
+                    ai.removeFromSuperview()
+                }
                 if let error = error {
                     self.showAlert(title: "Error Deleting Database", message: error.localizedDescription)
                 } else {
@@ -105,7 +116,7 @@ extension MostViewedViewController: UITableViewDelegate {
         let vc = factory.makeAppDetailViewController(app: app)
         navigationController?.pushViewController(vc, animated: true)
     }
-
+    
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         return apps.isEmpty ? "No apps have been viewed yet." : nil
     }

@@ -2,27 +2,31 @@ import UIKit
 
 class NewViewController: UIViewController {
     private let tableView = UITableView()
+    private let refreshControl = UIRefreshControl()
     private let factory: Factory
-
+    
     init(factory: Factory) {
         self.factory = factory
-
+        
         super.init(nibName: nil, bundle: nil)
-
+        
         navigationItem.title = "Apps By Release Date"
-
+        
+        refreshControl.configure(target: self, action: #selector(getData))
+        
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-        tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
+        tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        tableView.refreshControl = refreshControl
+        tableView.tableFooterView = UIView()
         tableView.register(
             UINib(nibName: LargeAppCell.reuseIdentifier, bundle: nil),
             forCellReuseIdentifier: LargeAppCell.reuseIdentifier
         )
-
+        
         view.addSubview(tableView)
-
+        
         let deleteDatabaseButton = UIBarButtonItem(
             image: UIImage(named: "delete-db")?.withRenderingMode(.alwaysOriginal),
             style: .plain,
@@ -30,24 +34,29 @@ class NewViewController: UIViewController {
             action: #selector(deleteDatabase)
         )
         navigationItem.rightBarButtonItem = deleteDatabaseButton
+        
+        getData()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = false
         getData()
     }
-
+    
     private var apps = [App]() {
         didSet {
             tableView.reloadData()
         }
     }
-
-    private func getData() {
+    
+    @objc private func getData() {
         let ai = view.showActivityIndicator()
         factory.newService.getAppsByReleaseDate() { [weak self] result in
-            ai.removeFromSuperviewMainQueue()
+            DispatchQueue.main.async {
+                ai.removeFromSuperview()
+                self?.refreshControl.endRefreshing()
+            }
             switch result {
             case .failure(let error):
                 self?.showAlert(title: "Error Getting Apps By Release Date", message: error.localizedDescription)
@@ -56,7 +65,7 @@ class NewViewController: UIViewController {
             }
         }
     }
-
+    
     @objc func deleteDatabase() {
         showAlert(title: "Delete Database?", message: nil) { [weak self] _ in
             guard let `self` = self else {
@@ -64,7 +73,9 @@ class NewViewController: UIViewController {
             }
             let ai = self.view.showActivityIndicator()
             self.factory.deleteService.deleteDatabase() { error in
-                ai.removeFromSuperviewMainQueue()
+                DispatchQueue.main.async {
+                    ai.removeFromSuperview()
+                }
                 if let error = error {
                     self.showAlert(title: "Error Deleting Database", message: error.localizedDescription)
                 } else {
@@ -74,7 +85,7 @@ class NewViewController: UIViewController {
             }
         }
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -84,7 +95,7 @@ extension NewViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return apps.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: LargeAppCell.reuseIdentifier) as! LargeAppCell
         let app = apps[indexPath.row]
@@ -97,15 +108,15 @@ extension NewViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-
+        
         let app = apps[indexPath.row]
         let vc = factory.makeAppDetailViewController(app: app)
         navigationController?.pushViewController(vc, animated: true)
     }
-
+    
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         return apps.isEmpty ? "No apps in database." : nil
     }

@@ -2,6 +2,7 @@ import UIKit
 
 class RecentViewController: UIViewController {
     private let tableView = UITableView()
+    private let refreshControl = UIRefreshControl()
     private let factory: Factory
     
     init(factory: Factory) {
@@ -11,11 +12,14 @@ class RecentViewController: UIViewController {
         
         navigationItem.title = "Recently Searched Apps"
         
+        refreshControl.configure(target: self, action: #selector(getData))
+        
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-        tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
+        tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        tableView.refreshControl = refreshControl
+        tableView.tableFooterView = UIView()
         tableView.register(
             UINib(nibName: LargeAppCell.reuseIdentifier, bundle: nil),
             forCellReuseIdentifier: LargeAppCell.reuseIdentifier
@@ -30,6 +34,8 @@ class RecentViewController: UIViewController {
             action: #selector(deleteDatabase)
         )
         navigationItem.rightBarButtonItem = deleteDatabaseButton
+        
+        getData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -43,11 +49,14 @@ class RecentViewController: UIViewController {
             tableView.reloadData()
         }
     }
-
-    private func getData() {
+    
+    @objc private func getData() {
         let ai = view.showActivityIndicator()
         factory.recentService.getAppsBySearchDate(offset: 0) { [weak self] result in
-            ai.removeFromSuperviewMainQueue()
+            DispatchQueue.main.async {
+                ai.removeFromSuperview()
+                self?.refreshControl.endRefreshing()
+            }
             switch result {
             case .failure(let error):
                 self?.showAlert(title: "Error Getting Apps By Search Date", message: error.localizedDescription)
@@ -56,7 +65,7 @@ class RecentViewController: UIViewController {
             }
         }
     }
-
+    
     @objc func deleteDatabase() {
         showAlert(title: "Delete Database?", message: nil) { [weak self] _ in
             guard let `self` = self else {
@@ -64,7 +73,9 @@ class RecentViewController: UIViewController {
             }
             let ai = self.view.showActivityIndicator()
             self.factory.deleteService.deleteDatabase() { error in
-                ai.removeFromSuperviewMainQueue()
+                DispatchQueue.main.async {
+                    ai.removeFromSuperview()
+                }
                 if let error = error {
                     self.showAlert(title: "Error Deleting Database", message: error.localizedDescription)
                 } else {
@@ -105,7 +116,7 @@ extension RecentViewController: UITableViewDelegate {
         let vc = factory.makeAppDetailViewController(app: app)
         navigationController?.pushViewController(vc, animated: true)
     }
-
+    
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         return apps.isEmpty ? "No recently searched apps." : nil
     }

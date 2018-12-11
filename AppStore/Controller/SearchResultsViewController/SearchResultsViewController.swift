@@ -10,13 +10,13 @@ class SearchResultsViewController: UIViewController {
     let tableView = UITableView()
     let factory: Factory
     weak var delegate: SearchResultsVCDelegate?
-
+    
     init(factory: Factory, delegate: SearchResultsVCDelegate) {
         self.factory = factory
         self.delegate = delegate
-
+        
         super.init(nibName: nil, bundle: nil)
-
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
@@ -25,26 +25,26 @@ class SearchResultsViewController: UIViewController {
             UINib(nibName: LargeAppCell.reuseIdentifier, bundle: nil),
             forCellReuseIdentifier: LargeAppCell.reuseIdentifier
         )
-
+        
         view.addSubview(tableView)
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     var searchPreviews = [String]() {
         didSet {
             tableView.reloadData()
         }
     }
-
+    
     var searchResults = [App]() {
         didSet {
             tableView.reloadData()
         }
     }
-
+    
     var isShowingSearchResults = false {
         didSet {
             if isShowingSearchResults {
@@ -55,7 +55,7 @@ class SearchResultsViewController: UIViewController {
             tableView.reloadData()
         }
     }
-
+    
     func search(query: String, saveSearch: Bool) {
         if saveSearch {
             delegate?.controller(self, didStartNewSearch: query)
@@ -66,7 +66,9 @@ class SearchResultsViewController: UIViewController {
             guard let `self` = self else {
                 return
             }
-            ai.removeFromSuperviewMainQueue()
+            DispatchQueue.main.async {
+                ai.removeFromSuperview()
+            }
             switch result {
             case .failure(let error):
                 self.showAlert(title: "Search Error", message: error.localizedDescription)
