@@ -1,8 +1,6 @@
 import UIKit
 
 class Factory {
-    let user: User
-    let authService: AuthServiceProtocol
     let recentService: RecentServiceProtocol
     let newService: NewServiceProtocol
     let mostViewedService: MostViewedServiceProtocol
@@ -10,16 +8,12 @@ class Factory {
     let searchService: SearchServiceProtocol
     let imageLoader: ImageLoading
     
-    init(user: User,
-         authService: AuthServiceProtocol = AuthService(),
-         recentService: RecentServiceProtocol = URLSession.shared,
+    init(recentService: RecentServiceProtocol = URLSession.shared,
          newService: NewServiceProtocol = URLSession.shared,
          mostViewedService: MostViewedServiceProtocol = URLSession.shared,
          categoriesService: CategoriesServiceProtocol = URLSession.shared,
          searchService: SearchServiceProtocol = SearchService(urlSession: URLSession.shared),
          imageLoader: ImageLoading = URLSession.shared) {
-        self.user = user
-        self.authService = authService
         self.recentService = recentService
         self.newService = newService
         self.mostViewedService = mostViewedService

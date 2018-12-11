@@ -33,11 +33,7 @@
 		595BF0BD21B89C3A00965F1E /* SearchVC+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595BF0BC21B89C3A00965F1E /* SearchVC+TableViewDelegate.swift */; };
 		595BF0C021B89EC400965F1E /* LargeAppCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 595BF0BF21B89EC400965F1E /* LargeAppCell.xib */; };
 		595BF0C221B8AD0F00965F1E /* LargeSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595BF0C121B8AD0F00965F1E /* LargeSearchCell.swift */; };
-		5983583C21B765CE00362AC5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5983583B21B765CE00362AC5 /* GoogleService-Info.plist */; };
-		5983584021B76A2700362AC5 /* AuthListening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983583F21B76A2700362AC5 /* AuthListening.swift */; };
-		5983584221B76C7E00362AC5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983584121B76C7E00362AC5 /* LoginViewController.swift */; };
 		5983584421B76E0500362AC5 /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983584321B76E0500362AC5 /* Extension+UIViewController.swift */; };
-		5983584621B76F8200362AC5 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983584521B76F8200362AC5 /* AuthService.swift */; };
 		5984542021BF0E3A00FD729F /* NewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5984541F21BF0E3A00FD729F /* NewService.swift */; };
 		599879B521BF110C00681F6E /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599879B421BF110C00681F6E /* NewViewController.swift */; };
 		59B0C52F21B74625004495F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0C52E21B74625004495F6 /* AppDelegate.swift */; };
@@ -119,11 +115,7 @@
 		595BF0BC21B89C3A00965F1E /* SearchVC+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchVC+TableViewDelegate.swift"; sourceTree = "<group>"; };
 		595BF0BF21B89EC400965F1E /* LargeAppCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LargeAppCell.xib; sourceTree = "<group>"; };
 		595BF0C121B8AD0F00965F1E /* LargeSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeSearchCell.swift; sourceTree = "<group>"; };
-		5983583B21B765CE00362AC5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		5983583F21B76A2700362AC5 /* AuthListening.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthListening.swift; sourceTree = "<group>"; };
-		5983584121B76C7E00362AC5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5983584321B76E0500362AC5 /* Extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
-		5983584521B76F8200362AC5 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		5984541F21BF0E3A00FD729F /* NewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewService.swift; sourceTree = "<group>"; };
 		599879B421BF110C00681F6E /* NewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewViewController.swift; sourceTree = "<group>"; };
 		59B0C52B21B74625004495F6 /* AppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,15 +194,6 @@
 				AE0AC904BD1D0CB1471E99D7 /* Pods-AppStoreUITests.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		5916D07421B77AA700FD98DA /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				5983583F21B76A2700362AC5 /* AuthListening.swift */,
-				5983584521B76F8200362AC5 /* AuthService.swift */,
-			);
-			path = Auth;
 			sourceTree = "<group>";
 		};
 		5916D07721B7AE3800FD98DA /* Util */ = {
@@ -299,7 +282,6 @@
 				595BF0BE21B89E0700965F1E /* View */,
 				59B0C55E21B74BD8004495F6 /* Controller */,
 				59B0C56621B74D64004495F6 /* Factory */,
-				5916D07421B77AA700FD98DA /* Auth */,
 				59B0C56321B74CE9004495F6 /* Network */,
 				59B0C56921B75420004495F6 /* Extension */,
 				5916D07721B7AE3800FD98DA /* Util */,
@@ -308,7 +290,6 @@
 				59B0C53921B74626004495F6 /* LaunchScreen.storyboard */,
 				59B0C53721B74626004495F6 /* Assets.xcassets */,
 				59B0C53C21B74626004495F6 /* Info.plist */,
-				5983583B21B765CE00362AC5 /* GoogleService-Info.plist */,
 			);
 			path = AppStore;
 			sourceTree = "<group>";
@@ -334,7 +315,6 @@
 		59B0C55E21B74BD8004495F6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5983584121B76C7E00362AC5 /* LoginViewController.swift */,
 				59B0C53021B74625004495F6 /* RecentViewController.swift */,
 				599879B421BF110C00681F6E /* NewViewController.swift */,
 				59B0C53221B74625004495F6 /* MostViewedViewController.swift */,
@@ -409,7 +389,6 @@
 				59B0C52721B74624004495F6 /* Sources */,
 				59B0C52821B74624004495F6 /* Frameworks */,
 				59B0C52921B74624004495F6 /* Resources */,
-				6B143EDFA3BFE455D6E7F101 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -509,7 +488,6 @@
 				595BC75621BA5D4300A9CE80 /* AppDetailVersionCell.xib in Resources */,
 				5903C15E21BA052C0012DDFA /* AppDetailScreenshotCell.xib in Resources */,
 				59B0C53B21B74626004495F6 /* LaunchScreen.storyboard in Resources */,
-				5983583C21B765CE00362AC5 /* GoogleService-Info.plist in Resources */,
 				5952A1B021B9FFE000DA4394 /* AppDetailScreenshotsCell.xib in Resources */,
 				59B0C53821B74626004495F6 /* Assets.xcassets in Resources */,
 				59D0E52C21BA67C00023B55D /* AppDetailInfoCell.xib in Resources */,
@@ -574,28 +552,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6B143EDFA3BFE455D6E7F101 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-AppStore/Pods-AppStore-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AppStore/Pods-AppStore-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		8C209DE3D23B601A83084542 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -621,7 +577,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5983584221B76C7E00362AC5 /* LoginViewController.swift in Sources */,
 				59D7A5CC21BA52B500161FAF /* AppDetailDescriptionCell.swift in Sources */,
 				59B0C57021B75D29004495F6 /* Extension+UIStoryboard.swift in Sources */,
 				59B0C56821B74DB0004495F6 /* Factory.swift in Sources */,
@@ -651,7 +606,6 @@
 				599879B521BF110C00681F6E /* NewViewController.swift in Sources */,
 				5984542021BF0E3A00FD729F /* NewService.swift in Sources */,
 				59D0E52E21BA686F0023B55D /* AppDetailInfoCell.swift in Sources */,
-				5983584021B76A2700362AC5 /* AuthListening.swift in Sources */,
 				5916D07621B7A7D800FD98DA /* SearchService.swift in Sources */,
 				59B0C56521B74D1E004495F6 /* RecentService.swift in Sources */,
 				5956318B21B936D30010B2BE /* CategoryViewController.swift in Sources */,
@@ -662,7 +616,6 @@
 				592A6C3521B8DEE000AC2865 /* SearchResultsVC+TableViewDataSource.swift in Sources */,
 				592A6C3321B8DD8D00AC2865 /* SearchVC+SearchResultsVCDelegate.swift in Sources */,
 				595BF0B521B877E700965F1E /* SearchVC+TableViewDataSource.swift in Sources */,
-				5983584621B76F8200362AC5 /* AuthService.swift in Sources */,
 				59F5EA8F21B9B98D0034B18E /* Extension+UIColor.swift in Sources */,
 				59F881A021BAD2EC00F21F1E /* User.swift in Sources */,
 			);

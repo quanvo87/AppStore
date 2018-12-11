@@ -6,8 +6,7 @@ target 'AppStore' do
   use_frameworks!
 
   # Pods for AppStore
-  pod 'Firebase/Core'
-  pod 'Firebase/Auth'
+
 
   target 'AppStoreTests' do
     inherit! :search_paths

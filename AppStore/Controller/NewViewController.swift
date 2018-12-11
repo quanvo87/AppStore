@@ -54,9 +54,9 @@ class NewViewController: UIViewController {
     }
 
     @objc func logout() {
-        showAlert(title: "Log Out", message: "Do you want to log out?") { [weak self] _ in
-            self?.factory.authService.logOut()
-        }
+//        showAlert(title: "Log Out", message: "Do you want to log out?") { [weak self] _ in
+//            self?.factory.authService.logOut()
+//        }
     }
 
     required init?(coder aDecoder: NSCoder) {
