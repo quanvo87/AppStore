@@ -38,8 +38,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVh-0N-v6l">
-                        <rect key="frame" x="140" y="90" width="60" height="30"/>
+                        <rect key="frame" x="140" y="95" width="60" height="25"/>
                         <constraints>
+                            <constraint firstAttribute="height" constant="25" id="XdU-dM-Fxl"/>
                             <constraint firstAttribute="width" constant="60" id="sf0-NO-u1c"/>
                         </constraints>
                         <state key="normal" title="Price"/>

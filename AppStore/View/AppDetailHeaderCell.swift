@@ -18,7 +18,7 @@ class AppDetailHeaderCell: UITableViewCell {
         appIconImageView.layer.cornerRadius = 25
         appIconImageView.clipsToBounds = true
         appNameLabel.font = UIFont.boldSystemFont(ofSize: 22)
-        priceButton.layer.cornerRadius = 15
+        priceButton.layer.cornerRadius = 13
         priceButton.setTitleColor(.white, for: .normal)
         priceButton.backgroundColor = UIColor.tintColor
     }

@@ -28,7 +28,7 @@ class CategoriesViewController: UIViewController {
         }
         
         let logoutButton = UIBarButtonItem(
-            image: UIImage(named: "user")?.withRenderingMode(.alwaysOriginal),
+            image: UIImage(named: "delete-db")?.withRenderingMode(.alwaysOriginal),
             style: .plain,
             target: self,
             action: #selector(logout)

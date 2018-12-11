@@ -23,6 +23,7 @@ class LargeAppCell: UITableViewCell {
         appIconImageView.layer.cornerRadius = 15
         appIconImageView.clipsToBounds = true
         priceButton.layer.cornerRadius = 15
+        priceButton.isUserInteractionEnabled = false
         screenshot1imageView.layer.cornerRadius = 10
         screenshot1imageView.clipsToBounds = true
         screenshot1imageView.contentMode = .scaleAspectFill
