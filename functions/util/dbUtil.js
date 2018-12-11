@@ -3,6 +3,15 @@ const db = require('../index').db
 
 const querySize = 50
 
+deleteCollection = collection => {
+  const ref = db.collection(collection)
+  return ref
+    .get()
+    .then(snapshot =>
+      Promise.all(snapshot.docs.map(doc => ref.doc(doc.id).delete()))
+    )
+}
+
 exports.saveSearch = query =>
   db.collection('search').add({
     query: query,
@@ -111,3 +120,7 @@ exports.getAppsForGenre = genre =>
       })
       .catch(error => reject(error))
   )
+
+exports.deleteDatabase = () => {
+  return Promise.all([deleteCollection('app'), deleteCollection('search')])
+}

@@ -107,3 +107,13 @@ exports.appsForGenre = functions.https.onRequest((req, res) => {
       return res.status(400).end()
     })
 })
+
+exports.deleteDatabase = functions.https.onRequest((_, res) =>
+  dbUtil
+    .deleteDatabase()
+    .then(() => res.send(200))
+    .catch(error => {
+      console.log(error)
+      return res.status(400).end()
+    })
+)
