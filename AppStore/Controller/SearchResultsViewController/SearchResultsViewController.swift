@@ -61,10 +61,12 @@ class SearchResultsViewController: UIViewController {
             delegate?.controller(self, didStartNewSearch: query)
         }
         isShowingSearchResults = true
+        let ai = view.showActivityIndicator()
         factory.searchService.search(query: query, saveSearch: saveSearch) { [weak self] result in
             guard let `self` = self else {
                 return
             }
+            ai.removeFromSuperviewMainQueue()
             switch result {
             case .failure(let error):
                 self.showAlert(title: "Search Error", message: error.localizedDescription)

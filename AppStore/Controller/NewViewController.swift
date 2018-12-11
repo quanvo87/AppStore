@@ -45,7 +45,9 @@ class NewViewController: UIViewController {
     }
 
     private func getData() {
+        let ai = view.showActivityIndicator()
         factory.newService.getAppsByReleaseDate() { [weak self] result in
+            ai.removeFromSuperviewMainQueue()
             switch result {
             case .failure(let error):
                 self?.showAlert(title: "Error Getting Apps By Release Date", message: error.localizedDescription)
@@ -57,12 +59,17 @@ class NewViewController: UIViewController {
 
     @objc func deleteDatabase() {
         showAlert(title: "Delete Database?", message: nil) { [weak self] _ in
-            self?.factory.deleteService.deleteDatabase() { error in
+            guard let `self` = self else {
+                return
+            }
+            let ai = self.view.showActivityIndicator()
+            self.factory.deleteService.deleteDatabase() { error in
+                ai.removeFromSuperviewMainQueue()
                 if let error = error {
-                    self?.showAlert(title: "Error Deleting Database", message: error.localizedDescription)
+                    self.showAlert(title: "Error Deleting Database", message: error.localizedDescription)
                 } else {
-                    self?.showAlert(title: "Delete Database Successful", message: nil)
-                    self?.getData()
+                    self.showAlert(title: "Delete Database Successful", message: nil)
+                    self.getData()
                 }
             }
         }

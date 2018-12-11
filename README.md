@@ -1,14 +1,12 @@
 # App Store
 
-Quan Vo
-
 ## Installation Instructions
 
 - clone the repo and `cd` into it
-- run `AppStore.xcworkspace`
+- run `AppStore.xcodeproj`
 - run the simulator
 
-> Note: The backend consists of 8 REST APIs deployed as serverless cloud functions. They go to sleep after inactivity, so each API could take ~5 seconds to start up. Things should be snappy after that though.
+> Note: The backend consists of REST APIs deployed as serverless cloud functions. They go to sleep after inactivity, so each API could take ~5 seconds to start up. Things should be snappy after that though.
 
 ## Notable Features
 
@@ -33,16 +31,9 @@ Quan Vo
 
 ## TODO
 
-Further investigate known issues:
- - URLSession memory leak
- - SearchController memory leak (haven't been able to recreate)
-
 Things to add:
 
 - unit and UI tests
-- loading indicators
-- pull to refresh
-- pagination
 - cache to file system
 - background updates
 - swagger

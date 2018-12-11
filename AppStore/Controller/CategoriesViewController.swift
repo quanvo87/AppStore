@@ -17,8 +17,10 @@ class CategoriesViewController: UIViewController {
         tableView.tableFooterView = UIView()
         
         view.addSubview(tableView)
-        
+
+        let ai = view.showActivityIndicator()
         factory.categoriesService.getCategories { [weak self] result in
+            ai.removeFromSuperviewMainQueue()
             switch result {
             case .failure(let error):
                 self?.showAlert(title: "Error Getting App Categories", message: error.localizedDescription)
@@ -49,11 +51,16 @@ class CategoriesViewController: UIViewController {
     
     @objc func deleteDatabase() {
         showAlert(title: "Delete Database?", message: nil) { [weak self] _ in
-            self?.factory.deleteService.deleteDatabase() { error in
+            guard let `self` = self else {
+                return
+            }
+            let ai = self.view.showActivityIndicator()
+            self.factory.deleteService.deleteDatabase() { error in
+                ai.removeFromSuperviewMainQueue()
                 if let error = error {
-                    self?.showAlert(title: "Error Deleting Database", message: error.localizedDescription)
+                    self.showAlert(title: "Error Deleting Database", message: error.localizedDescription)
                 } else {
-                    self?.showAlert(title: "Delete Database Successful", message: nil)
+                    self.showAlert(title: "Delete Database Successful", message: nil)
                 }
             }
         }

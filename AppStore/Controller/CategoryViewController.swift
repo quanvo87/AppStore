@@ -29,8 +29,10 @@ class CategoryViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = false
-        
+
+        let ai = view.showActivityIndicator()
         factory.categoriesService.getAppsForCategory(category) { [weak self] result in
+            ai.removeFromSuperviewMainQueue()
             switch result {
             case .failure(let error):
                 self?.showAlert(title: "Error Getting Apps", message: error.localizedDescription)
@@ -75,5 +77,9 @@ extension CategoryViewController: UITableViewDelegate {
         let app = apps[indexPath.row]
         let vc = factory.makeAppDetailViewController(app: app)
         navigationController?.pushViewController(vc, animated: true)
+    }
+
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return apps.isEmpty ? "No apps in this category." : nil
     }
 }

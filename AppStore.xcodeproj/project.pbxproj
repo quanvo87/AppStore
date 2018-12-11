@@ -34,6 +34,7 @@
 		595BF0C021B89EC400965F1E /* LargeAppCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 595BF0BF21B89EC400965F1E /* LargeAppCell.xib */; };
 		595BF0C221B8AD0F00965F1E /* LargeSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595BF0C121B8AD0F00965F1E /* LargeSearchCell.swift */; };
 		5963C30121BF447C002ACE13 /* DeleteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5963C30021BF447C002ACE13 /* DeleteService.swift */; };
+		5963C30521BF7CE0002ACE13 /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5963C30421BF7CE0002ACE13 /* Extension+UIView.swift */; };
 		5983584421B76E0500362AC5 /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983584321B76E0500362AC5 /* Extension+UIViewController.swift */; };
 		5984542021BF0E3A00FD729F /* NewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5984541F21BF0E3A00FD729F /* NewService.swift */; };
 		599879B521BF110C00681F6E /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599879B421BF110C00681F6E /* NewViewController.swift */; };
@@ -109,6 +110,7 @@
 		595BF0BF21B89EC400965F1E /* LargeAppCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LargeAppCell.xib; sourceTree = "<group>"; };
 		595BF0C121B8AD0F00965F1E /* LargeSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeSearchCell.swift; sourceTree = "<group>"; };
 		5963C30021BF447C002ACE13 /* DeleteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteService.swift; sourceTree = "<group>"; };
+		5963C30421BF7CE0002ACE13 /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
 		5983584321B76E0500362AC5 /* Extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
 		5984541F21BF0E3A00FD729F /* NewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewService.swift; sourceTree = "<group>"; };
 		599879B421BF110C00681F6E /* NewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewViewController.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 			children = (
 				59B0C56F21B75D29004495F6 /* Extension+UIStoryboard.swift */,
 				5983584321B76E0500362AC5 /* Extension+UIViewController.swift */,
+				5963C30421BF7CE0002ACE13 /* Extension+UIView.swift */,
 				59F5EA8E21B9B98D0034B18E /* Extension+UIColor.swift */,
 				59F8819B21BA6FB200F21F1E /* Extension+String.swift */,
 			);
@@ -506,6 +509,7 @@
 				59B0C56021B74C24004495F6 /* CategoriesViewController.swift in Sources */,
 				59D361F921B9B73D00BFA96E /* AppDetailHeaderCell.swift in Sources */,
 				5983584421B76E0500362AC5 /* Extension+UIViewController.swift in Sources */,
+				5963C30521BF7CE0002ACE13 /* Extension+UIView.swift in Sources */,
 				59B0C56E21B7563D004495F6 /* App.swift in Sources */,
 				599879B521BF110C00681F6E /* NewViewController.swift in Sources */,
 				5984542021BF0E3A00FD729F /* NewService.swift in Sources */,

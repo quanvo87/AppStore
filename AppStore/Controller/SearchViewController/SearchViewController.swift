@@ -42,22 +42,23 @@ class SearchViewController: UIViewController {
         if #available(iOS 11.0, *) {
             navigationItem.hidesSearchBarWhenScrolling = false
         }
-    }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        if #available(iOS 11.0, *) {
-            navigationItem.hidesSearchBarWhenScrolling = true
-        }
-
+        let ai = view.showActivityIndicator()
         factory.searchService.getRecentSearches { [weak self] result in
+            ai.removeFromSuperviewMainQueue()
             switch result {
             case .failure(let error):
                 self?.showAlert(title: "Error Getting Recent Searches", message: error.localizedDescription)
             case .success(let recentSearches):
                 self?.recentSearches = recentSearches
             }
+        }
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if #available(iOS 11.0, *) {
+            navigationItem.hidesSearchBarWhenScrolling = true
         }
     }
 
