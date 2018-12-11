@@ -13,9 +13,9 @@ class Factory {
          newService: NewServiceProtocol = URLSession.shared,
          mostViewedService: MostViewedServiceProtocol = URLSession.shared,
          categoriesService: CategoriesServiceProtocol = URLSession.shared,
-         searchService: SearchServiceProtocol = SearchService(urlSession: URLSession.shared),
+         searchService: SearchServiceProtocol = SearchService(urlSession: .shared),
          deleteService: DeleteServiceProtocol = URLSession.shared,
-         imageLoader: ImageLoading = URLSession.shared) {
+         imageLoader: ImageLoading = ImageLoader(urlSession: .shared)) {
         self.recentService = recentService
         self.newService = newService
         self.mostViewedService = mostViewedService

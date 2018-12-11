@@ -17,4 +17,12 @@ extension SearchResultsViewController: UITableViewDelegate {
             search(query: searchPreview, saveSearch: true)
         }
     }
+
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        if isShowingSearchResults {
+            return searchResults.isEmpty ? "No matching search results." : nil
+        } else {
+            return searchPreviews.isEmpty ? "No matching search results." : nil
+        }
+    }
 }

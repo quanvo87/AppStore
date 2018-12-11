@@ -2,8 +2,6 @@ import UIKit
 
 let decoder = JSONDecoder()
 
-let imageCache = NSCache<NSString, UIImage>()
-
 let urlComponents: URLComponents = {
     var components = URLComponents()
     components.scheme = "https"

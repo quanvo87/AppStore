@@ -54,7 +54,7 @@ class MostViewedViewController: UIViewController {
             }
         }
     }
-    
+
     @objc func deleteDatabase() {
         showAlert(title: "Delete Database?", message: nil) { [weak self] _ in
             self?.factory.deleteService.deleteDatabase() { error in
@@ -97,5 +97,9 @@ extension MostViewedViewController: UITableViewDelegate {
         let app = apps[indexPath.row]
         let vc = factory.makeAppDetailViewController(app: app)
         navigationController?.pushViewController(vc, animated: true)
+    }
+
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return apps.isEmpty ? "No apps have been viewed yet." : nil
     }
 }

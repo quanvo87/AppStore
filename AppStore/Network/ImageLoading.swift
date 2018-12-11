@@ -4,17 +4,24 @@ protocol ImageLoading {
     func getImage(forUrl url: String, completion: @escaping (Result<(String, UIImage)>) -> Void)
 }
 
-extension URLSession: ImageLoading {
-    func getImage(forUrl urlString: String, completion: @escaping (Result<(String, UIImage)>) -> Void) {
-        if let image = imageCache.object(forKey: urlString as NSString) {
-            completion(.success((urlString, image)))
+class ImageLoader: ImageLoading {
+    private let urlSession: URLSession
+    private let cache = NSCache<NSString, UIImage>()
+
+    init(urlSession: URLSession) {
+        self.urlSession = urlSession
+    }
+
+    func getImage(forUrl url: String, completion: @escaping (Result<(String, UIImage)>) -> Void) {
+        if let image = cache.object(forKey: url as NSString) {
+            completion(.success((url, image)))
             return
         }
-        guard let url = URL(string: urlString) else {
+        guard let urlObject = URL(string: url) else {
             completion(.failure(CustomError.invalidUrl))
             return
         }
-        dataTask(with: url) {data, response, error in
+        urlSession.dataTask(with: urlObject) { [weak self] data, response, error in
             if let error = error {
                 completion(.failure(error))
                 return
@@ -31,10 +38,10 @@ extension URLSession: ImageLoading {
                 completion(.failure(CustomError.imageFromDataFailed))
                 return
             }
-            imageCache.setObject(image, forKey: urlString as NSString)
+            self?.cache.setObject(image, forKey: url as NSString)
             DispatchQueue.main.async {
-                completion(.success((urlString, image)))
+                completion(.success((url, image)))
             }
-        }.resume()
+            }.resume()
     }
 }

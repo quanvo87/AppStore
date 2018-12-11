@@ -85,4 +85,8 @@ extension CategoriesViewController: UITableViewDelegate {
         let vc = CategoryViewController(category: category, factory: factory)
         navigationController?.pushViewController(vc, animated: true)
     }
+
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return categories.isEmpty ? "No app categories." : nil
+    }
 }

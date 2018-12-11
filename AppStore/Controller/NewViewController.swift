@@ -98,4 +98,8 @@ extension NewViewController: UITableViewDelegate {
         let vc = factory.makeAppDetailViewController(app: app)
         navigationController?.pushViewController(vc, animated: true)
     }
+
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return apps.isEmpty ? "No apps in database." : nil
+    }
 }

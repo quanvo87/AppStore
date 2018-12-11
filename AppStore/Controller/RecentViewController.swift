@@ -43,7 +43,7 @@ class RecentViewController: UIViewController {
             tableView.reloadData()
         }
     }
-    
+
     private func getData() {
         factory.recentService.getAppsBySearchDate(offset: 0) { [weak self] result in
             switch result {
@@ -54,7 +54,7 @@ class RecentViewController: UIViewController {
             }
         }
     }
-    
+
     @objc func deleteDatabase() {
         showAlert(title: "Delete Database?", message: nil) { [weak self] _ in
             self?.factory.deleteService.deleteDatabase() { error in
@@ -97,5 +97,9 @@ extension RecentViewController: UITableViewDelegate {
         let app = apps[indexPath.row]
         let vc = factory.makeAppDetailViewController(app: app)
         navigationController?.pushViewController(vc, animated: true)
+    }
+
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return apps.isEmpty ? "No recently searched apps." : nil
     }
 }

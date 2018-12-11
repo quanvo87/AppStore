@@ -9,4 +9,8 @@ extension SearchViewController: UITableViewDelegate {
         navigationItem.searchController?.searchBar.text = recentSearch
         delegate?.controller(self, didSelectRecentSearch: recentSearch)
     }
+
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return recentSearches.isEmpty ? "No recent searches." : nil
+    }
 }
