@@ -23,20 +23,28 @@ class NewViewController: UIViewController {
 
         view.addSubview(tableView)
 
-        let logoutButton = UIBarButtonItem(
+        let deleteDatabaseButton = UIBarButtonItem(
             image: UIImage(named: "delete-db")?.withRenderingMode(.alwaysOriginal),
             style: .plain,
             target: self,
-            action: #selector(logout)
+            action: #selector(deleteDatabase)
         )
-        navigationItem.rightBarButtonItem = logoutButton
+        navigationItem.rightBarButtonItem = deleteDatabaseButton
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         navigationController?.navigationBar.prefersLargeTitles = false
+        getData()
+    }
 
+    private var apps = [App]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+
+    private func getData() {
         factory.newService.getAppsByReleaseDate() { [weak self] result in
             switch result {
             case .failure(let error):
@@ -47,16 +55,17 @@ class NewViewController: UIViewController {
         }
     }
 
-    var apps = [App]() {
-        didSet {
-            tableView.reloadData()
+    @objc func deleteDatabase() {
+        showAlert(title: "Delete Database?", message: nil) { [weak self] _ in
+            self?.factory.deleteService.deleteDatabase() { error in
+                if let error = error {
+                    self?.showAlert(title: "Error Deleting Database", message: error.localizedDescription)
+                } else {
+                    self?.showAlert(title: "Delete Database Successful", message: nil)
+                    self?.getData()
+                }
+            }
         }
-    }
-
-    @objc func logout() {
-//        showAlert(title: "Log Out", message: "Do you want to log out?") { [weak self] _ in
-//            self?.factory.authService.logOut()
-//        }
     }
 
     required init?(coder aDecoder: NSCoder) {

@@ -6,6 +6,7 @@ class Factory {
     let mostViewedService: MostViewedServiceProtocol
     let categoriesService: CategoriesServiceProtocol
     let searchService: SearchServiceProtocol
+    let deleteService: DeleteServiceProtocol
     let imageLoader: ImageLoading
     
     init(recentService: RecentServiceProtocol = URLSession.shared,
@@ -13,12 +14,14 @@ class Factory {
          mostViewedService: MostViewedServiceProtocol = URLSession.shared,
          categoriesService: CategoriesServiceProtocol = URLSession.shared,
          searchService: SearchServiceProtocol = SearchService(urlSession: URLSession.shared),
+         deleteService: DeleteServiceProtocol = URLSession.shared,
          imageLoader: ImageLoading = URLSession.shared) {
         self.recentService = recentService
         self.newService = newService
         self.mostViewedService = mostViewedService
         self.categoriesService = categoriesService
         self.searchService = searchService
+        self.deleteService = deleteService
         self.imageLoader = imageLoader
     }
     

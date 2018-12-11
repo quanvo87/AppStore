@@ -27,32 +27,37 @@ class CategoriesViewController: UIViewController {
             }
         }
         
-        let logoutButton = UIBarButtonItem(
+        let deleteDatabaseButton = UIBarButtonItem(
             image: UIImage(named: "delete-db")?.withRenderingMode(.alwaysOriginal),
             style: .plain,
             target: self,
-            action: #selector(logout)
+            action: #selector(deleteDatabase)
         )
-        navigationItem.rightBarButtonItem = logoutButton
+        navigationItem.rightBarButtonItem = deleteDatabaseButton
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = true
     }
-
+    
     private var categories = [String]() {
         didSet {
             tableView.reloadData()
         }
     }
     
-    @objc func logout() {
-//        showAlert(title: "Log Out", message: "Do you want to log out?") { [weak self] _ in
-//            self?.factory.authService.logOut()
-//        }
+    @objc func deleteDatabase() {
+        showAlert(title: "Delete Database?", message: nil) { [weak self] _ in
+            self?.factory.deleteService.deleteDatabase() { error in
+                if let error = error {
+                    self?.showAlert(title: "Error Deleting Database", message: error.localizedDescription)
+                } else {
+                    self?.showAlert(title: "Delete Database Successful", message: nil)
+                }
+            }
+        }
     }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -75,7 +80,7 @@ extension CategoriesViewController: UITableViewDataSource {
 extension CategoriesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-
+        
         let category = categories[indexPath.row]
         let vc = CategoryViewController(category: category, factory: factory)
         navigationController?.pushViewController(vc, animated: true)
