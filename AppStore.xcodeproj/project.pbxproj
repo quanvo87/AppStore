@@ -32,7 +32,7 @@
 		595BF0B921B8785A00965F1E /* SearchResultsVC+SearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595BF0B821B8785A00965F1E /* SearchResultsVC+SearchBarDelegate.swift */; };
 		595BF0BD21B89C3A00965F1E /* SearchVC+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595BF0BC21B89C3A00965F1E /* SearchVC+TableViewDelegate.swift */; };
 		595BF0C021B89EC400965F1E /* LargeAppCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 595BF0BF21B89EC400965F1E /* LargeAppCell.xib */; };
-		595BF0C221B8AD0F00965F1E /* LargeSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595BF0C121B8AD0F00965F1E /* LargeSearchCell.swift */; };
+		595BF0C221B8AD0F00965F1E /* LargeAppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595BF0C121B8AD0F00965F1E /* LargeAppCell.swift */; };
 		5963C30121BF447C002ACE13 /* DeleteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5963C30021BF447C002ACE13 /* DeleteService.swift */; };
 		5963C30521BF7CE0002ACE13 /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5963C30421BF7CE0002ACE13 /* Extension+UIView.swift */; };
 		5963C30721BF82D5002ACE13 /* Extension+UIRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5963C30621BF82D5002ACE13 /* Extension+UIRefreshControl.swift */; };
@@ -63,7 +63,6 @@
 		59F5EA9121B9BC550034B18E /* AppDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F5EA9021B9BC550034B18E /* AppDetailViewController.swift */; };
 		59F8819C21BA6FB200F21F1E /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F8819B21BA6FB200F21F1E /* Extension+String.swift */; };
 		59F8819E21BA74D500F21F1E /* MostViewedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F8819D21BA74D500F21F1E /* MostViewedService.swift */; };
-		59F881A021BAD2EC00F21F1E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F8819F21BAD2EC00F21F1E /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,7 +108,7 @@
 		595BF0B821B8785A00965F1E /* SearchResultsVC+SearchBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchResultsVC+SearchBarDelegate.swift"; sourceTree = "<group>"; };
 		595BF0BC21B89C3A00965F1E /* SearchVC+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchVC+TableViewDelegate.swift"; sourceTree = "<group>"; };
 		595BF0BF21B89EC400965F1E /* LargeAppCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LargeAppCell.xib; sourceTree = "<group>"; };
-		595BF0C121B8AD0F00965F1E /* LargeSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeSearchCell.swift; sourceTree = "<group>"; };
+		595BF0C121B8AD0F00965F1E /* LargeAppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeAppCell.swift; sourceTree = "<group>"; };
 		5963C30021BF447C002ACE13 /* DeleteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteService.swift; sourceTree = "<group>"; };
 		5963C30421BF7CE0002ACE13 /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
 		5963C30621BF82D5002ACE13 /* Extension+UIRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIRefreshControl.swift"; sourceTree = "<group>"; };
@@ -146,7 +145,6 @@
 		59F5EA9021B9BC550034B18E /* AppDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailViewController.swift; sourceTree = "<group>"; };
 		59F8819B21BA6FB200F21F1E /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
 		59F8819D21BA74D500F21F1E /* MostViewedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostViewedService.swift; sourceTree = "<group>"; };
-		59F8819F21BAD2EC00F21F1E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,7 +217,7 @@
 				59D7A5C921BA518800161FAF /* AppDetailDescriptionCell.xib */,
 				595BC75521BA5D4300A9CE80 /* AppDetailVersionCell.xib */,
 				59D0E52B21BA67C00023B55D /* AppDetailInfoCell.xib */,
-				595BF0C121B8AD0F00965F1E /* LargeSearchCell.swift */,
+				595BF0C121B8AD0F00965F1E /* LargeAppCell.swift */,
 				59D361F821B9B73D00BFA96E /* AppDetailHeaderCell.swift */,
 				59146BE321B9F78A00F2744C /* AppDetailRatingsCell.swift */,
 				5952A1B121BA003300DA4394 /* AppDetailScreenshotsCell.swift */,
@@ -342,7 +340,6 @@
 			isa = PBXGroup;
 			children = (
 				59B0C56D21B7563D004495F6 /* App.swift */,
-				59F8819F21BAD2EC00F21F1E /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -357,6 +354,7 @@
 				59B0C52721B74624004495F6 /* Sources */,
 				59B0C52821B74624004495F6 /* Frameworks */,
 				59B0C52921B74624004495F6 /* Resources */,
+				5927A18821C2AC1000029553 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -481,6 +479,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5927A18821C2AC1000029553 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		59B0C52721B74624004495F6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -523,13 +541,12 @@
 				59B0C53121B74625004495F6 /* RecentViewController.swift in Sources */,
 				595BF0BD21B89C3A00965F1E /* SearchVC+TableViewDelegate.swift in Sources */,
 				592A6C3921B8E0A900AC2865 /* SearchResultsVC+SearchVCDelegate.swift in Sources */,
-				595BF0C221B8AD0F00965F1E /* LargeSearchCell.swift in Sources */,
+				595BF0C221B8AD0F00965F1E /* LargeAppCell.swift in Sources */,
 				5963C30721BF82D5002ACE13 /* Extension+UIRefreshControl.swift in Sources */,
 				592A6C3521B8DEE000AC2865 /* SearchResultsVC+TableViewDataSource.swift in Sources */,
 				592A6C3321B8DD8D00AC2865 /* SearchVC+SearchResultsVCDelegate.swift in Sources */,
 				595BF0B521B877E700965F1E /* SearchVC+TableViewDataSource.swift in Sources */,
 				59F5EA8F21B9B98D0034B18E /* Extension+UIColor.swift in Sources */,
-				59F881A021BAD2EC00F21F1E /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

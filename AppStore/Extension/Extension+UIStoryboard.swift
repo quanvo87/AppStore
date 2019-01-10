@@ -1,7 +1,5 @@
 import UIKit
 
 extension UIStoryboard {
-    static var main: UIStoryboard {
-        return UIStoryboard(name: "Main", bundle: nil)
-    }
+    static let main = UIStoryboard(name: "Main", bundle: nil)
 }

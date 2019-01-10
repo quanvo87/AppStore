@@ -5,7 +5,6 @@ extension String {
         let formatter = ByteCountFormatter()
         formatter.allowedUnits = [.useAll]
         formatter.countStyle = .file
-
         return formatter
     }()
 

@@ -1,43 +1,39 @@
 # App Store
 
+- Search apps just like the Apple App Store
+- View app details and screen shots
+- View apps by category, popularity, and recent searches
+
 ## Installation Instructions
 
-- clone the repo and `cd` into it
-- run `AppStore.xcodeproj`
-- run the simulator
+- Clone repo and `cd` into it
+- Open `AppStore.xcodeproj`
+- `⌘ + r` to run simulator
 
-> Note: The backend consists of REST APIs deployed as serverless cloud functions. They go to sleep after inactivity, so each API could take ~5 seconds to start up. Things should be snappy after that though.
+> Note: Backend is cloud functions. Please allow ~5 seconds to wake up.
 
-## Notable Features
+## Features
 
-- 3 ways to search a term:
-    - touch a `Recent Search`
-    - type in the search bar and tap `Search` on the keyboard
-    - type in the search bar and tap one of the suggestions that appear
+- Search apps with live suggestions via `UISearchController`
 
-- Async loading and caching of images provides fast, smooth scrolling. Even while scrolling extremely quickly through a large amount of images.
+  - Each keystroke in search bar cancels pending work item
+  - Only make request after 250 ms delay
+  - Reduces unnecessary requests
 
-- Dependency injection
+- Smooth scrolling via async loading and caching of images
 
-- SearchServiceProtocol:
-    - concrete implementation retains a `DispatchWorkItem`
-    - on each keystroke in search bar, this class cancels the pending work item
-    - only makes http request after 250 ms delay
-    - reduces amount of unnecessary requests
+- `AppDetailViewController` features vertical and horizontal scrolling `UICollectionViewCell`s to emulate real App Store
 
-- properly displays wide vs tall screen shots in app preview and detail cells
+- Dependency injection:
 
-- Express serverless cloud functions inside `/functions` folder
+  - Network layer consists of several single responsibility service protocols
+  - Controllers depend on these abstractions
+  - Production code uses `URLSession` implementation of these protocols by default
 
-## TODO
+- Implementation details hidden from classes using factories
 
-Things to add:
+- Profiled in Instruments
 
-- unit and UI tests
-- cache to file system
-- background updates
-- swagger
+- Frontend has zero dependencies
 
-More found in issues.
-
-Please let me know if you have any questions!
+- Backend is Express cloud functions

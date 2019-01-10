@@ -90,8 +90,7 @@ extension AppDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let section = Section(rawValue: section), section == Section.info {
             return 5
-        }
-        else {
+        } else {
             return 1
         }
     }
@@ -100,26 +99,54 @@ extension AppDetailViewController: UITableViewDataSource {
         guard let section = Section(rawValue: indexPath.section) else {
             return UITableViewCell()
         }
-        
+
         switch section {
         case .header:
-            let cell = tableView.dequeueReusableCell(withIdentifier: AppDetailHeaderCell.reuseIdentifier) as! AppDetailHeaderCell
+            guard let cell = tableView
+                .dequeueReusableCell(withIdentifier: AppDetailHeaderCell.reuseIdentifier) as? AppDetailHeaderCell else {
+                    assertionFailure()
+                    return AppDetailHeaderCell()
+            }
             cell.load(app: app, factory: factory)
             return cell
         case .ratings:
-            let cell = tableView.dequeueReusableCell(withIdentifier: AppDetailRatingsCell.reuseIdentifier) as! AppDetailRatingsCell
+            guard let cell = tableView
+                .dequeueReusableCell(
+                    withIdentifier: AppDetailRatingsCell.reuseIdentifier
+                ) as? AppDetailRatingsCell else {
+                    assertionFailure()
+                    return AppDetailRatingsCell()
+            }
             cell.load(app: app)
             return cell
         case .screenshots:
-            let cell = tableView.dequeueReusableCell(withIdentifier: AppDetailScreenshotsCell.reuseIdentifier) as! AppDetailScreenshotsCell
+            guard let cell = tableView
+                .dequeueReusableCell(
+                    withIdentifier: AppDetailScreenshotsCell.reuseIdentifier
+                ) as? AppDetailScreenshotsCell else {
+                    assertionFailure()
+                    return AppDetailScreenshotsCell()
+            }
             cell.load(screenshotUrls: app.screenshotUrls, factory: factory)
             return cell
         case .description:
-            let cell = tableView.dequeueReusableCell(withIdentifier: AppDetailDescriptionCell.reuseIdentifier) as! AppDetailDescriptionCell
+            guard let cell = tableView
+                .dequeueReusableCell(
+                    withIdentifier: AppDetailDescriptionCell.reuseIdentifier
+                ) as? AppDetailDescriptionCell else {
+                    assertionFailure()
+                    return AppDetailDescriptionCell()
+            }
             cell.load(description: app.description)
             return cell
         case .version:
-            let cell = tableView.dequeueReusableCell(withIdentifier: AppDetailVersionCell.reuseIdentifier) as! AppDetailVersionCell
+            guard let cell = tableView
+                .dequeueReusableCell(
+                    withIdentifier: AppDetailVersionCell.reuseIdentifier
+                ) as? AppDetailVersionCell else {
+                    assertionFailure()
+                    return AppDetailVersionCell()
+            }
             cell.load(app: app)
             return cell
         case .info:
@@ -131,19 +158,35 @@ extension AppDetailViewController: UITableViewDataSource {
                 cell.textLabel?.text = "Information"
                 return cell
             case 1:
-                let cell = tableView.dequeueReusableCell(withIdentifier: AppDetailInfoCell.reuseIdentifier) as! AppDetailInfoCell
+                guard let cell = tableView
+                    .dequeueReusableCell(withIdentifier: AppDetailInfoCell.reuseIdentifier) as? AppDetailInfoCell else {
+                        assertionFailure()
+                        return AppDetailInfoCell()
+                }
                 cell.load(title: "Seller", detail: app.sellerName)
                 return cell
             case 2:
-                let cell = tableView.dequeueReusableCell(withIdentifier: AppDetailInfoCell.reuseIdentifier) as! AppDetailInfoCell
+                guard let cell = tableView
+                    .dequeueReusableCell(withIdentifier: AppDetailInfoCell.reuseIdentifier) as? AppDetailInfoCell else {
+                        assertionFailure()
+                        return AppDetailInfoCell()
+                }
                 cell.load(title: "Size", detail: app.fileSizeBytes.toMB)
                 return cell
             case 3:
-                let cell = tableView.dequeueReusableCell(withIdentifier: AppDetailInfoCell.reuseIdentifier) as! AppDetailInfoCell
+                guard let cell = tableView
+                    .dequeueReusableCell(withIdentifier: AppDetailInfoCell.reuseIdentifier) as? AppDetailInfoCell else {
+                        assertionFailure()
+                        return AppDetailInfoCell()
+                }
                 cell.load(title: "Category", detail: app.primaryGenreName)
                 return cell
             case 4:
-                let cell = tableView.dequeueReusableCell(withIdentifier: AppDetailInfoCell.reuseIdentifier) as! AppDetailInfoCell
+                guard let cell = tableView
+                    .dequeueReusableCell(withIdentifier: AppDetailInfoCell.reuseIdentifier) as? AppDetailInfoCell else {
+                        assertionFailure()
+                        return AppDetailInfoCell()
+                }
                 cell.load(title: "Age Rating", detail: app.trackContentRating)
                 return cell
             default:

@@ -36,11 +36,7 @@ exports.getRecentSearches = () =>
       .orderBy('date', 'desc')
       .limit(querySize)
       .get()
-      .then(snapshot => {
-        const recentSearches = []
-        snapshot.forEach(doc => recentSearches.push(doc.data()['query']))
-        return resolve(recentSearches)
-      })
+      .then(snapshot => resolve(snapshot.docs.map(doc => doc.data()['query'])))
       .catch(error => reject(error))
   )
 
@@ -51,11 +47,7 @@ exports.getAppsBySearchDate = () =>
       .orderBy('searchDate', 'desc')
       .limit(querySize * 2)
       .get()
-      .then(snapshot => {
-        const apps = []
-        snapshot.forEach(doc => apps.push(doc.data()))
-        return resolve(apps)
-      })
+      .then(snapshot => resolve(snapshot.docs.map(doc => doc.data())))
       .catch(error => reject(error))
   )
 
@@ -66,11 +58,7 @@ exports.getAppsByReleaseDate = () =>
       .orderBy('currentVersionReleaseDate', 'desc')
       .limit(querySize)
       .get()
-      .then(snapshot => {
-        const apps = []
-        snapshot.forEach(doc => apps.push(doc.data()))
-        return resolve(apps)
-      })
+      .then(snapshot => resolve(snapshot.docs.map(doc => doc.data())))
       .catch(error => reject(error))
   )
 
@@ -97,11 +85,7 @@ exports.getMostViewedApps = () =>
       .orderBy('viewCount', 'desc')
       .limit(querySize)
       .get()
-      .then(snapshot => {
-        const apps = []
-        snapshot.forEach(doc => apps.push(doc.data()))
-        return resolve(apps)
-      })
+      .then(snapshot => resolve(snapshot.docs.map(doc => doc.data())))
       .catch(error => rejcet(error))
   })
 
@@ -113,11 +97,7 @@ exports.getAppsForGenre = genre =>
       .orderBy('searchDate', 'desc')
       .limit(querySize * 2)
       .get()
-      .then(snapshot => {
-        const apps = []
-        snapshot.forEach(doc => apps.push(doc.data()))
-        return resolve(apps)
-      })
+      .then(snapshot => resolve(snapshot.docs.map(doc => doc.data())))
       .catch(error => reject(error))
   )
 

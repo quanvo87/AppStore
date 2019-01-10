@@ -12,7 +12,7 @@ class AppDetailRatingsCell: UITableViewCell {
         super.awakeFromNib()
 
         selectionStyle = .none
-        
+
         ratingLabel.font = UIFont.boldSystemFont(ofSize: 20)
         viewCountLabel.font = UIFont.boldSystemFont(ofSize: 20)
         contentRatingLabel.font = UIFont.boldSystemFont(ofSize: 20)

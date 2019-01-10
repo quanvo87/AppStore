@@ -7,7 +7,6 @@ protocol SearchServiceProtocol {
 
 class SearchService: SearchServiceProtocol {
     private let urlSession: URLSession
-
     private var pendingWorkItem: DispatchWorkItem?
 
     init(urlSession: URLSession) {
@@ -77,7 +76,7 @@ class SearchService: SearchServiceProtocol {
             } catch {
                 completion(.failure(error))
             }
-        }.resume()
+            }.resume()
     }
 }
 

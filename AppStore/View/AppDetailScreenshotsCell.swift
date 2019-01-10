@@ -23,12 +23,12 @@ class AppDetailScreenshotsCell: UITableViewCell {
     }
 
     func load(screenshotUrls: [String], factory: Factory) {
-        self.screenshotUrls = screenshotUrls
-        self.factory = factory
-
         guard !screenshotUrls.isEmpty else {
             return
         }
+
+        self.screenshotUrls = screenshotUrls
+        self.factory = factory
 
         let url = screenshotUrls[0]
         self.url = url
@@ -75,12 +75,19 @@ extension AppDetailScreenshotsCell: UICollectionViewDataSource {
         return screenshotUrls.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let factory = factory else {
             return UICollectionViewCell()
         }
+        guard let cell = collectionView
+            .dequeueReusableCell(
+                withReuseIdentifier: AppDetailScreenshotCell.reuseIdentifier, for: indexPath
+            ) as? AppDetailScreenshotCell else {
+                assertionFailure()
+                return AppDetailScreenshotCell()
+        }
         let screenshotUrl = screenshotUrls[indexPath.row]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppDetailScreenshotCell.reuseIdentifier, for: indexPath) as! AppDetailScreenshotCell
         cell.load(screenshotUrl: screenshotUrl, factory: factory)
         return cell
     }

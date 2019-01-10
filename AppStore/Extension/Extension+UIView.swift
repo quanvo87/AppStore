@@ -5,12 +5,12 @@ extension UIView {
         let view = UIView(frame: bounds)
         view.isUserInteractionEnabled = false
 
-        let ai = UIActivityIndicatorView(style: .gray)
-        ai.center = center
-        ai.startAnimating()
+        let aiView = UIActivityIndicatorView(style: .gray)
+        aiView.center = center
+        aiView.startAnimating()
 
         DispatchQueue.main.async {
-            view.addSubview(ai)
+            view.addSubview(aiView)
             self.addSubview(view)
         }
 
