@@ -16,7 +16,7 @@ extension UILabel {
             fullTextHeight = text?.boundingRect(
                 with: rectBounds,
                 options: .usesLineFragmentOrigin,
-                attributes: [NSAttributedString.Key.font: font],
+                attributes: [NSAttributedString.Key.font: font as Any],
                 context: nil).size.height
         }
 
