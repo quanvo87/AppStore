@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -24,16 +24,25 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vSh-fK-COv">
+                        <rect key="frame" x="325" y="84.5" width="30" height="5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <state key="normal" title="more"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="d5G-dB-ne6" secondAttribute="bottom" constant="20" id="Mlv-wh-uIs"/>
+                    <constraint firstAttribute="bottom" secondItem="vSh-fK-COv" secondAttribute="bottom" constant="10" id="Sia-r1-W9o"/>
                     <constraint firstItem="d5G-dB-ne6" firstAttribute="top" secondItem="MIx-Au-TBc" secondAttribute="top" constant="20" id="WxX-e7-Ivw"/>
                     <constraint firstItem="d5G-dB-ne6" firstAttribute="leading" secondItem="MIx-Au-TBc" secondAttribute="leading" constant="20" id="dnq-Go-1Ti"/>
+                    <constraint firstItem="vSh-fK-COv" firstAttribute="top" secondItem="d5G-dB-ne6" secondAttribute="bottom" constant="5" id="jpe-Dj-0zI"/>
                     <constraint firstAttribute="trailing" secondItem="d5G-dB-ne6" secondAttribute="trailing" constant="20" id="op3-q7-UDr"/>
+                    <constraint firstAttribute="trailing" secondItem="vSh-fK-COv" secondAttribute="trailing" constant="20" id="wQX-IZ-WLa"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="appDescriptionLabel" destination="d5G-dB-ne6" id="gqO-0e-0Cp"/>
+                <outlet property="moreButton" destination="vSh-fK-COv" id="L1K-Fb-4kE"/>
             </connections>
             <point key="canvasLocation" x="30" y="-173"/>
         </tableViewCell>

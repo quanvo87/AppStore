@@ -19,6 +19,7 @@
 		592A6C3521B8DEE000AC2865 /* SearchResultsVC+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592A6C3421B8DEE000AC2865 /* SearchResultsVC+TableViewDataSource.swift */; };
 		592A6C3721B8DF0300AC2865 /* SearchResultsVC+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592A6C3621B8DF0300AC2865 /* SearchResultsVC+TableViewDelegate.swift */; };
 		592A6C3921B8E0A900AC2865 /* SearchResultsVC+SearchVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592A6C3821B8E0A900AC2865 /* SearchResultsVC+SearchVCDelegate.swift */; };
+		593F96BE2253A68E00E72884 /* Extension+UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593F96BD2253A68E00E72884 /* Extension+UILabel.swift */; };
 		5952A1B021B9FFE000DA4394 /* AppDetailScreenshotsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5952A1AF21B9FFE000DA4394 /* AppDetailScreenshotsCell.xib */; };
 		5952A1B221BA003300DA4394 /* AppDetailScreenshotsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5952A1B121BA003300DA4394 /* AppDetailScreenshotsCell.swift */; };
 		5956318921B932060010B2BE /* CategoriesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5956318821B932060010B2BE /* CategoriesService.swift */; };
@@ -95,6 +96,7 @@
 		592A6C3421B8DEE000AC2865 /* SearchResultsVC+TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchResultsVC+TableViewDataSource.swift"; sourceTree = "<group>"; };
 		592A6C3621B8DF0300AC2865 /* SearchResultsVC+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchResultsVC+TableViewDelegate.swift"; sourceTree = "<group>"; };
 		592A6C3821B8E0A900AC2865 /* SearchResultsVC+SearchVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchResultsVC+SearchVCDelegate.swift"; sourceTree = "<group>"; };
+		593F96BD2253A68E00E72884 /* Extension+UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UILabel.swift"; sourceTree = "<group>"; };
 		5952A1AF21B9FFE000DA4394 /* AppDetailScreenshotsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppDetailScreenshotsCell.xib; sourceTree = "<group>"; };
 		5952A1B121BA003300DA4394 /* AppDetailScreenshotsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailScreenshotsCell.swift; sourceTree = "<group>"; };
 		5956318821B932060010B2BE /* CategoriesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesService.swift; sourceTree = "<group>"; };
@@ -256,7 +258,7 @@
 				595BF0BE21B89E0700965F1E /* View */,
 				59B0C55E21B74BD8004495F6 /* Controller */,
 				59B0C56621B74D64004495F6 /* Factory */,
-				59B0C56321B74CE9004495F6 /* Network */,
+				59B0C56321B74CE9004495F6 /* Service */,
 				59B0C56921B75420004495F6 /* Extension */,
 				5916D07721B7AE3800FD98DA /* Util */,
 				59B0C52E21B74625004495F6 /* AppDelegate.swift */,
@@ -301,7 +303,7 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		59B0C56321B74CE9004495F6 /* Network */ = {
+		59B0C56321B74CE9004495F6 /* Service */ = {
 			isa = PBXGroup;
 			children = (
 				59B0C56421B74D1E004495F6 /* RecentService.swift */,
@@ -312,7 +314,7 @@
 				5963C30021BF447C002ACE13 /* DeleteService.swift */,
 				592A6C2B21B8B51600AC2865 /* ImageLoading.swift */,
 			);
-			path = Network;
+			path = Service;
 			sourceTree = "<group>";
 		};
 		59B0C56621B74D64004495F6 /* Factory */ = {
@@ -328,6 +330,7 @@
 			children = (
 				59F8819B21BA6FB200F21F1E /* Extension+String.swift */,
 				59F5EA8E21B9B98D0034B18E /* Extension+UIColor.swift */,
+				593F96BD2253A68E00E72884 /* Extension+UILabel.swift */,
 				5963C30621BF82D5002ACE13 /* Extension+UIRefreshControl.swift */,
 				59B0C56F21B75D29004495F6 /* Extension+UIStoryboard.swift */,
 				5963C30421BF7CE0002ACE13 /* Extension+UIView.swift */,
@@ -508,6 +511,7 @@
 				59B0C57021B75D29004495F6 /* Extension+UIStoryboard.swift in Sources */,
 				5963C30121BF447C002ACE13 /* DeleteService.swift in Sources */,
 				59B0C56821B74DB0004495F6 /* Factory.swift in Sources */,
+				593F96BE2253A68E00E72884 /* Extension+UILabel.swift in Sources */,
 				59B0C56221B74C37004495F6 /* SearchViewController.swift in Sources */,
 				5956318921B932060010B2BE /* CategoriesService.swift in Sources */,
 				595BF0B021B8549D00965F1E /* CustomError.swift in Sources */,

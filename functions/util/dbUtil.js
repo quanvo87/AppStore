@@ -15,7 +15,8 @@ deleteCollection = collection => {
 exports.saveSearch = query =>
   db.collection('search').add({
     query: query,
-    date: admin.firestore.FieldValue.serverTimestamp()
+    date: admin.firestore.FieldValue.serverTimestamp(),
+    viewCount: 0
   })
 
 exports.saveApps = apps => {

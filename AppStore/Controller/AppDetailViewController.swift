@@ -4,6 +4,7 @@ class AppDetailViewController: UIViewController {
     private let tableView = UITableView()
     private let factory: Factory
     private var app: App
+    private var sectionsToExpand = Set<Section>()
 
     init(app: App, factory: Factory) {
         self.app = app
@@ -12,6 +13,7 @@ class AppDetailViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
 
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.separatorStyle = .none
         tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         tableView.tableFooterView = UIView()
@@ -137,7 +139,7 @@ extension AppDetailViewController: UITableViewDataSource {
                     assertionFailure()
                     return AppDetailDescriptionCell()
             }
-            cell.load(description: app.description)
+            cell.load(description: app.description, expand: sectionsToExpand.contains(.description))
             return cell
         case .version:
             guard let cell = tableView
@@ -192,6 +194,22 @@ extension AppDetailViewController: UITableViewDataSource {
             default:
                 return UITableViewCell()
             }
+        }
+    }
+}
+
+extension AppDetailViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let section = Section(rawValue: indexPath.section) else {
+            return
+        }
+
+        switch section {
+        case .description:
+            sectionsToExpand.insert(section)
+            tableView.reloadRows(at: [indexPath], with: .fade)
+        default:
+            return
         }
     }
 }
