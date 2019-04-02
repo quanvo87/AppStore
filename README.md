@@ -20,7 +20,7 @@
   - Only make request after 250 ms delay
   - Reduces unnecessary requests
 
-- Smooth scrolling via async loading and caching of images
+- Smooth scrolling via async loading and (in memory) caching of images
 
 - `AppDetailViewController` features vertical and horizontal scrolling `UICollectionViewCell`s to emulate real App Store
 
